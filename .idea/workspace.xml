@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="开发公共依赖以及多个模块定义">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/972f5178-eec3-4339-b36d-a0f1d571c0fa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/972f5178-eec3-4339-b36d-a0f1d571c0fa.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/enums/UserErrorCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/enums/UserErrorCodeEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/dao/entity/UserDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/dao/entity/UserDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/dto/resp/UserRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/dto/resp/UserRespDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/service/IUserService.java" afterDir="false" />
+    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="开发短链接系统用户模块相关配置">
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,11 +154,42 @@
       <workItem from="1730802090486" duration="657000" />
       <workItem from="1730863306112" duration="15000" />
       <workItem from="1731286057857" duration="16019000" />
-      <workItem from="1731374434655" duration="28969000" />
+      <workItem from="1731374434655" duration="30714000" />
     </task>
+    <task id="LOCAL-00001" summary="开发短链接系统用户注册相关功能">
+      <option name="closed" value="true" />
+      <created>1731486929285</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1731486929285</updated>
+    </task>
+    <task id="LOCAL-00002" summary="开发短链接系统通用持久层实体填充对象">
+      <option name="closed" value="true" />
+      <created>1731487009642</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1731487009642</updated>
+    </task>
+    <task id="LOCAL-00003" summary="开发短链接系统用户模块相关配置">
+      <option name="closed" value="true" />
+      <created>1731487072143</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731487072143</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="开发短链接系统用户注册相关功能" />
+    <MESSAGE value="开发短链接系统通用持久层实体填充对象" />
+    <MESSAGE value="开发短链接系统用户模块相关配置" />
+    <option name="LAST_COMMIT_MESSAGE" value="开发短链接系统用户模块相关配置" />
   </component>
 </project>
