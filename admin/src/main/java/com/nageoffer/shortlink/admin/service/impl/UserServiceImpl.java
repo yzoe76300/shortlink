@@ -6,15 +6,22 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.nageoffer.shortlink.admin.common.convension.exception.ClientException;
 import com.nageoffer.shortlink.admin.dao.entity.UserDO;
 import com.nageoffer.shortlink.admin.dao.mapper.UserMapper;
+import com.nageoffer.shortlink.admin.dto.req.UserRegisterReqDTO;
 import com.nageoffer.shortlink.admin.dto.resp.UserRespDTO;
 import com.nageoffer.shortlink.admin.service.IUserService;
+import lombok.RequiredArgsConstructor;
+import org.redisson.api.RBloomFilter;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import static com.nageoffer.shortlink.admin.common.enums.UserErrorCodeEnum.USER_NAME_EXIST;
 import static com.nageoffer.shortlink.admin.common.enums.UserErrorCodeEnum.USER_NULL;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements IUserService {
+    // 因爲交給spring管理所以多綫程狀態下注入的是同一個bean（單例bean）
+    private final RBloomFilter<String> userRegisterCachePenetrationBloomFilter;
     @Override
     public UserRespDTO getUserByUsername(String username){
     /*
@@ -31,5 +38,24 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
         UserRespDTO result = new UserRespDTO();
         BeanUtils.copyProperties(userDO, result);
         return result;
-    };
+    }
+
+    @Override
+    public Boolean hasUsername(String username) {
+        return userRegisterCachePenetrationBloomFilter.contains(username);
+    }
+
+    @Override
+    public void register(UserRegisterReqDTO requestParam) {
+        if (this.hasUsername(requestParam.getUsername())) {
+            throw new ClientException(USER_NAME_EXIST);
+        }
+        UserDO userDO = new UserDO();
+        BeanUtils.copyProperties(requestParam, userDO);
+        int insert = baseMapper.insert(userDO);
+        if(insert < 1){
+            throw new ClientException(USER_NULL);
+        }
+        userRegisterCachePenetrationBloomFilter.add(requestParam.getUsername());
+    }
 }

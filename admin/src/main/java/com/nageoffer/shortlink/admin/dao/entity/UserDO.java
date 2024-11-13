@@ -1,9 +1,11 @@
 package com.nageoffer.shortlink.admin.dao.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 /**
  * 持久化对象实体
  */
@@ -56,17 +58,19 @@ public class UserDO {
     /**
      * create_time
      */
-    private Date createTime;
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
 
     /**
      * del_flag
      */
+    @TableField(fill = FieldFill.INSERT)
     private Integer delFlag;
 
     /**
      * update_time
      */
-    private Date updateTime;
-
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updateTime;
 
 }

@@ -1,15 +1,13 @@
 package com.nageoffer.shortlink.admin.controller;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.nageoffer.shortlink.admin.common.convension.result.Result;
 import com.nageoffer.shortlink.admin.common.convension.result.Results;
+import com.nageoffer.shortlink.admin.dto.req.UserRegisterReqDTO;
 import com.nageoffer.shortlink.admin.dto.resp.UserRespDTO;
 import com.nageoffer.shortlink.admin.service.IUserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-
-import static com.nageoffer.shortlink.admin.common.enums.UserErrorCodeEnum.USER_NULL;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,12 +18,32 @@ public class UserController {
     /*
     * 根据用户名查询用户信息
     * */
-    @GetMapping("/api/shortlink/v1/user/{username}")
+    @GetMapping("/api/short-link/v1/user/{username}")
     public Result<UserRespDTO> getUserByUsername(@PathVariable("username") String username) {
-        UserRespDTO result = userService.getUserByUsername(username);
-        if (result == null) {
-            return new Result<UserRespDTO>().setCode(USER_NULL.code()).setMessage(USER_NULL.message());
-        }
-        return Results.success(result);
+        return Results.success(userService.getUserByUsername(username));
+    }
+    /*
+     * 根据用户名查询真实用户信息
+     * */
+    @GetMapping("/api/short-link/v1/real/user/{username}")
+    public Result<UserRespDTO> getRealUserByUsername(@PathVariable("username") String username) {
+        return Results.success(BeanUtil.toBean(userService.getUserByUsername(username), UserRespDTO.class));
+    }
+    /*
+     * 查询用户名是否存在
+     * */
+    @GetMapping("/api/short-link/v1/user/check")
+    public Result<Boolean> CheckUserNames(@RequestParam("username") String username) {
+        return Results.success(!userService.hasUsername(username));
+    }
+
+    /**
+     * 注冊用戶
+     * @param requestParam 注冊用戶請求參數
+     */
+    @PostMapping("/api/short-link/v1/user")
+    public Result<Void> register(@RequestBody UserRegisterReqDTO requestParam){
+        userService.register(requestParam);
+        return Results.success();
     }
 }
