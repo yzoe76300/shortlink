@@ -27,6 +27,7 @@ public class GroupServiceImpl extends ServiceImpl <GroupMapper, GroupDO> impleme
         // 不存在则生成新的gid
         GroupDO groupDO = GroupDO.builder()
                 .gid(RandomGenerator.generateRandomString())
+                .sortOrder(0)
                 .name(groupName)
                 .build();
         baseMapper.insert(groupDO);

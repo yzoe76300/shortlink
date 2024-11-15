@@ -39,6 +39,10 @@ public class GroupDO {
      * username
      */
     private String username;
+    /**
+     * 分组排序
+     */
+    private Integer sortOrder;
 
     /**
      * create_time
