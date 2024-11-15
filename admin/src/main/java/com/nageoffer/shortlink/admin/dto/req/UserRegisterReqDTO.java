@@ -1,15 +1,11 @@
 package com.nageoffer.shortlink.admin.dto.req;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-
-import java.util.Date;
 
 /*
 * 用戶注冊請求DTO參數
 * */
 @Data
-@TableName("t_user")
 public class UserRegisterReqDTO {
     /**
      * @description t_user
@@ -19,10 +15,6 @@ public class UserRegisterReqDTO {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * id
-     */
-    private Long id;
 
     /**
      * username
@@ -48,26 +40,4 @@ public class UserRegisterReqDTO {
      * email
      */
     private String email;
-
-    /**
-     * deletion_time
-     */
-    private Long deletionTime;
-
-    /**
-     * create_time
-     */
-    private Date createTime;
-
-    /**
-     * del_flag
-     */
-    private Integer delFlag;
-
-    /**
-     * update_time
-     */
-    private Date updateTime;
-
-
 }

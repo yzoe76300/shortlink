@@ -3,7 +3,10 @@ package com.nageoffer.shortlink.admin.controller;
 import cn.hutool.core.bean.BeanUtil;
 import com.nageoffer.shortlink.admin.common.convension.result.Result;
 import com.nageoffer.shortlink.admin.common.convension.result.Results;
+import com.nageoffer.shortlink.admin.dto.req.UserLoginReqDTO;
 import com.nageoffer.shortlink.admin.dto.req.UserRegisterReqDTO;
+import com.nageoffer.shortlink.admin.dto.req.UserUpdateReqDTO;
+import com.nageoffer.shortlink.admin.dto.resp.UserLoginRespDTO;
 import com.nageoffer.shortlink.admin.dto.resp.UserRespDTO;
 import com.nageoffer.shortlink.admin.service.IUserService;
 import lombok.RequiredArgsConstructor;
@@ -44,6 +47,44 @@ public class UserController {
     @PostMapping("/api/short-link/v1/user")
     public Result<Void> register(@RequestBody UserRegisterReqDTO requestParam){
         userService.register(requestParam);
+        return Results.success();
+    }
+
+    /**
+     * 更新用戶信息
+     * @param updateParam
+     * @return
+     */
+    @PutMapping("/api/short-link/v1/user")
+    public Result<Void> update(@RequestBody UserUpdateReqDTO updateParam){
+        userService.update(updateParam);
+        return Results.success();
+    }
+
+    @PostMapping("/api/short-link/v1/user/login")
+    public Result<UserLoginRespDTO> login(@RequestBody UserLoginReqDTO requestParam){
+        UserLoginRespDTO result = userService.login(requestParam);
+        return Results.success(result);
+    }
+
+    /**
+     * 检查用户是否登录
+     * @param uuid
+     * @return
+     */
+    @GetMapping("/api/short-link/v1/user/check-login")
+    public Result<Boolean> checkLogin(@RequestParam("uuid") String uuid, @RequestParam("username") String username) {
+        return Results.success(userService.checkLogin(username,uuid));
+    }
+    /**
+     * 注销用户
+     * @param uuid
+     * @return
+     */
+    @DeleteMapping("/api/short-link/v1/user/logout")
+    public Result<Void> logout(@RequestParam("uuid") String uuid, @RequestParam("username") String username){
+        // 登出功能: 1. 清除redis缓存中用户信息 2. 重定向到登录页面
+        userService.logout(username, uuid);
         return Results.success();
     }
 }
