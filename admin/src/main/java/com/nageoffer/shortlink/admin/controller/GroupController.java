@@ -3,13 +3,11 @@ package com.nageoffer.shortlink.admin.controller;
 import com.nageoffer.shortlink.admin.common.convension.result.Result;
 import com.nageoffer.shortlink.admin.common.convension.result.Results;
 import com.nageoffer.shortlink.admin.dto.req.ShortLinkGroupSaveReqDTO;
+import com.nageoffer.shortlink.admin.dto.req.ShortLinkGroupUpdateReqDTO;
 import com.nageoffer.shortlink.admin.dto.resp.ShortlinkGroupResponseDTO;
 import com.nageoffer.shortlink.admin.service.IGroupService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,9 +31,25 @@ public class GroupController {
 
     }
 
+    /**
+     * 获取短链接分组列表
+     * @return
+     */
     @GetMapping("/api/short-link/v1/group")
     public Result<List<ShortlinkGroupResponseDTO>> groupList(){
         List<ShortlinkGroupResponseDTO> groupList = groupService.getGroupList();
         return Results.success(groupList);
+    }
+
+    /**
+     * 更新短链接分组
+     * @param requestParam
+     * @return
+     */
+    @PutMapping("/api/short-link/v1/group")
+    public Result<Void> updateGroup(@RequestBody ShortLinkGroupUpdateReqDTO requestParam){
+        groupService.updateGroup(requestParam);
+        return Results.success();
+
     }
 }

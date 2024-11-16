@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 短链接后管分组排序创建">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/14517aef-9169-4fcd-80c1-2ed11eae1b3a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/14517aef-9169-4fcd-80c1-2ed11eae1b3a.xml" afterDir="false" />
+    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 短链接分组响应实体类">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/biz/user/UserTransmitFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/biz/user/UserTransmitFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/controller/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/controller/GroupController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/service/IGroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/service/IGroupService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/service/impl/GroupServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/service/impl/GroupServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/service/impl/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +180,7 @@
       <workItem from="1731551100611" duration="5661000" />
       <workItem from="1731563805785" duration="13178000" />
       <workItem from="1731633927216" duration="12184000" />
-      <workItem from="1731721332796" duration="3667000" />
+      <workItem from="1731721332796" duration="7321000" />
     </task>
     <task id="LOCAL-00001" summary="开发短链接系统用户注册相关功能">
       <option name="closed" value="true" />
@@ -247,7 +246,55 @@
       <option name="project" value="LOCAL" />
       <updated>1731652079896</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feature: 用户登录时间修改为24h">
+      <option name="closed" value="true" />
+      <created>1731725127849</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1731725127849</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feature: 用户系统上下文封装">
+      <option name="closed" value="true" />
+      <created>1731725343128</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1731725343128</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feature: 用户系统上下文DTO">
+      <option name="closed" value="true" />
+      <created>1731725359934</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1731725359934</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feature:">
+      <option name="closed" value="true" />
+      <created>1731725367537</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1731725367537</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feature: 短链接分组绑定用户上下文">
+      <option name="closed" value="true" />
+      <created>1731725409051</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1731725409051</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feature: 短链接分组响应实体类">
+      <option name="closed" value="true" />
+      <created>1731725427367</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1731725427367</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,6 +320,23 @@
     <MESSAGE value="feature: 短链接分组准备工作（MVCC层搭建dto）" />
     <MESSAGE value="feature: 短链接创建" />
     <MESSAGE value="feature: 短链接后管分组排序创建" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: 短链接后管分组排序创建" />
+    <MESSAGE value="feature: 用户登录时间修改为24h" />
+    <MESSAGE value="feature: 用户系统上下文封装" />
+    <MESSAGE value="feature: 用户系统上下文DTO" />
+    <MESSAGE value="feature:" />
+    <MESSAGE value="feature: 短链接分组绑定用户上下文" />
+    <MESSAGE value="feature: 短链接分组响应实体类" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: 短链接分组响应实体类" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/biz/user/UserTransmitFilter.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
