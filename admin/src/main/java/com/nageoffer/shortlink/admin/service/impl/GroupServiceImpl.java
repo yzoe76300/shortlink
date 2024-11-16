@@ -1,14 +1,19 @@
 package com.nageoffer.shortlink.admin.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.nageoffer.shortlink.admin.common.biz.user.UserContext;
 import com.nageoffer.shortlink.admin.dao.entity.GroupDO;
 import com.nageoffer.shortlink.admin.dao.mapper.GroupMapper;
+import com.nageoffer.shortlink.admin.dto.resp.ShortlinkGroupResponseDTO;
 import com.nageoffer.shortlink.admin.service.IGroupService;
 import com.nageoffer.shortlink.admin.toolkit.RandomGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 短链接分组接口业务实现层
@@ -28,14 +33,24 @@ public class GroupServiceImpl extends ServiceImpl <GroupMapper, GroupDO> impleme
         GroupDO groupDO = GroupDO.builder()
                 .gid(RandomGenerator.generateRandomString())
                 .sortOrder(0)
+                .username(UserContext.getUsername())
                 .name(groupName)
                 .build();
         baseMapper.insert(groupDO);
     }
+
+    @Override
+    public List<ShortlinkGroupResponseDTO> getGroupList() {
+        LambdaQueryWrapper<GroupDO> groupDOLambdaQueryWrapper = Wrappers.lambdaQuery(GroupDO.class)
+                .eq(GroupDO::getDelFlag, 0)
+                .eq(GroupDO::getUsername, UserContext.getUsername())
+                .orderByDesc(GroupDO::getSortOrder, GroupDO::getUpdateTime);
+        return BeanUtil.copyToList(baseMapper.selectList(groupDOLambdaQueryWrapper),ShortlinkGroupResponseDTO.class);
+    }
+
     private boolean hasGid(String gid){
         LambdaQueryWrapper<GroupDO> queryWrapper = Wrappers.lambdaQuery(GroupDO.class).eq(GroupDO::getGid, gid)
-                // TODO 设置用户名
-                .eq(GroupDO::getName, null);
+                .eq(GroupDO::getName, UserContext.getUsername());
         GroupDO hasGroupFlag = baseMapper.selectOne(queryWrapper);
         return hasGroupFlag != null;
     }
