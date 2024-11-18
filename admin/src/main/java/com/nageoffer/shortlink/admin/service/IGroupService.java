@@ -19,4 +19,8 @@ public interface IGroupService extends IService<GroupDO> {
     List<ShortlinkGroupResponseDTO> getGroupList();
 
     void updateGroup(ShortLinkGroupUpdateReqDTO requestParam);
+    /*
+    * 删除短链接分组标识
+    * */
+    void deleteGroup(String gid);
 }
