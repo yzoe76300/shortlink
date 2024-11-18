@@ -3,6 +3,7 @@ package com.nageoffer.shortlink.admin.controller;
 import com.nageoffer.shortlink.admin.common.convension.result.Result;
 import com.nageoffer.shortlink.admin.common.convension.result.Results;
 import com.nageoffer.shortlink.admin.dto.req.ShortLinkGroupSaveReqDTO;
+import com.nageoffer.shortlink.admin.dto.req.ShortLinkGroupSortGroupReqDTO;
 import com.nageoffer.shortlink.admin.dto.req.ShortLinkGroupUpdateReqDTO;
 import com.nageoffer.shortlink.admin.dto.resp.ShortlinkGroupResponseDTO;
 import com.nageoffer.shortlink.admin.service.IGroupService;
@@ -24,7 +25,7 @@ public class GroupController {
      * @param requestParam
      * @return
      */
-    @PostMapping("/api/short-link/v1/group")
+    @PostMapping("/api/short-link/admin/v1/group")
     public Result<Void> save(@RequestBody ShortLinkGroupSaveReqDTO requestParam){
         groupService.saveGroup(requestParam.getName());
         return Results.success();
@@ -35,7 +36,7 @@ public class GroupController {
      * 获取短链接分组列表
      * @return
      */
-    @GetMapping("/api/short-link/v1/group")
+    @GetMapping("/api/short-link/admin/v1/group")
     public Result<List<ShortlinkGroupResponseDTO>> groupList(){
         List<ShortlinkGroupResponseDTO> groupList = groupService.getGroupList();
         return Results.success(groupList);
@@ -46,14 +47,21 @@ public class GroupController {
      * @param requestParam
      * @return
      */
-    @PutMapping("/api/short-link/v1/group")
+    @PutMapping("/api/short-link/admin/v1/group")
     public Result<Void> updateGroup(@RequestBody ShortLinkGroupUpdateReqDTO requestParam) {
         groupService.updateGroup(requestParam);
         return Results.success();
     }
-    @DeleteMapping("/api/short-link/v1/group")
-    public Result<Void> deleteGroup(@RequestParam("gid") String gid){
-    groupService.deleteGroup(gid);
-    return Results.success();
+
+    @DeleteMapping("/api/short-link/admin/v1/group")
+    public Result<Void> deleteGroup(@RequestParam("gid") String gid) {
+        groupService.deleteGroup(gid);
+        return Results.success();
+    }
+
+    @PostMapping("/api/short-link/v1/admin/group/sort")
+    public Result<Void> sortGroup(@RequestBody List<ShortLinkGroupSortGroupReqDTO> requestParam){
+        groupService.sortGroup(requestParam);
+        return Results.success();
     }
 }
