@@ -36,7 +36,7 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
         String shortLinkSuffix = generateSuffix(requestParam);
         String fullShortUrl = new StringBuilder(requestParam.getDomain())
                                 .append("/")
-                                .append(requestParam.getDomain())
+                                .append(shortLinkSuffix)
                                 .toString();
         LinkDO shortLinkDO = LinkDO.builder()
                         .domain(requestParam.getDomain())

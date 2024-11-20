@@ -7,11 +7,10 @@
     <option name="showLibraryBeans" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 项目打包">
+    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 开发短链接分组查询功能">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/config/MyMetaObjectHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/config/MyMetaObjectHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/controller/ShortLinkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/controller/ShortLinkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/IShortLinkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/IShortLinkService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dao/entity/LinkDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dao/entity/LinkDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dto/resp/ShortLinkPageRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dto/resp/ShortLinkPageRespDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,7 +212,7 @@
       <workItem from="1731633927216" duration="12184000" />
       <workItem from="1731721332796" duration="7830000" />
       <workItem from="1731808831826" duration="1062000" />
-      <workItem from="1731893484820" duration="34304000" />
+      <workItem from="1731893484820" duration="36195000" />
     </task>
     <task id="LOCAL-00001" summary="开发短链接系统用户注册相关功能">
       <option name="closed" value="true" />
@@ -391,7 +390,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732064965771</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="feature: 开发短链接分组查询功能">
+      <option name="closed" value="true" />
+      <created>1732068598132</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1732068598132</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -430,6 +437,7 @@
     <MESSAGE value="feature: 短链接功能完善" />
     <MESSAGE value="feature: 用户登录验证拦截器修改" />
     <MESSAGE value="feature: 项目打包" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: 项目打包" />
+    <MESSAGE value="feature: 开发短链接分组查询功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: 开发短链接分组查询功能" />
   </component>
 </project>
