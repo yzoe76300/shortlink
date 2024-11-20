@@ -13,7 +13,6 @@ import com.nageoffer.shortlink.project.toolkit.HashUtil;
 import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
 import org.redisson.api.RBloomFilter;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 /*
@@ -52,7 +51,7 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
         shortLinkDO.setEnableStatus(0);
         try {
             baseMapper.insert(shortLinkDO);
-        } catch (DuplicateKeyException ex) {
+        } catch (Exception ex) {
             LambdaQueryWrapper<LinkDO> queryWrapper = Wrappers.lambdaQuery(LinkDO.class)
                     .eq(LinkDO::getFullShortUrl, fullShortUrl);
             LinkDO hasShortLink = baseMapper.selectOne(queryWrapper);

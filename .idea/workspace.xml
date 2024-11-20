@@ -3,9 +3,19 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BeansEndpointTabSettings">
+    <option name="showLibraryBeans" value="false" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 重构短链接后管路径">
+    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 短链接功能完善">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/972f5178-eec3-4339-b36d-a0f1d571c0fa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/972f5178-eec3-4339-b36d-a0f1d571c0fa.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/biz/user/UserTransmitFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/biz/user/UserTransmitFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/enums/UserErrorCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/enums/UserErrorCodeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/resources/shardingsphere-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/resources/shardingsphere-config.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +68,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ShortLinkTableSharingTest.executor": "Debug",
     "Application.UserTableSharingTest.executor": "Run",
     "Maven.shortlink-all [clean,package].executor": "Run",
     "Maven.shortlink-all [clean].executor": "Run",
@@ -70,7 +81,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.AdminApplication.executor": "Run",
-    "Spring Boot.ShortLinkAdminApplication.executor": "Debug",
+    "Spring Boot.ShortLinkAdminApplication.executor": "Run",
     "Spring Boot.ShortLinkApplication.executor": "Debug",
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "17",
@@ -105,11 +116,19 @@
       <recent name="C:\Users\yangz\Documents\java\shortlink\gateway\src\main\java\com\nageoffer\shortlink\gateway\controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
       <recent name="com.nageoffer.shortlink.project.config" />
       <recent name="com.nageoffer.shortlink.admin.dto.req" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ShortLinkApplication">
+  <component name="RunManager" selected="Spring Boot.ShortLinkAdminApplication">
+    <configuration name="ShortLinkTableSharingTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ShortLinkTableSharingTest" />
+      <module name="shortlink-project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserTableSharingTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.nageoffer.shortlink.admin.test.UserTableSharingTest" />
       <module name="shortlink-admin" />
@@ -164,8 +183,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.ShortLinkApplication" />
         <item itemvalue="Spring Boot.ShortLinkAdminApplication" />
+        <item itemvalue="Spring Boot.ShortLinkApplication" />
+        <item itemvalue="Application.ShortLinkTableSharingTest" />
         <item itemvalue="Application.UserTableSharingTest" />
       </list>
     </recent_temporary>
@@ -195,7 +215,7 @@
       <workItem from="1731633927216" duration="12184000" />
       <workItem from="1731721332796" duration="7830000" />
       <workItem from="1731808831826" duration="1062000" />
-      <workItem from="1731893484820" duration="21353000" />
+      <workItem from="1731893484820" duration="30133000" />
     </task>
     <task id="LOCAL-00001" summary="开发短链接系统用户注册相关功能">
       <option name="closed" value="true" />
@@ -341,7 +361,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731911659117</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="feature: 短链接功能完善">
+      <option name="closed" value="true" />
+      <created>1731998472783</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1731998472783</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,6 +405,7 @@
     <MESSAGE value="feature: 开发短链接系统分组修改功能" />
     <MESSAGE value="feature: 开发短链接系统分组删除功能" />
     <MESSAGE value="feature: 重构短链接后管路径" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: 重构短链接后管路径" />
+    <MESSAGE value="feature: 短链接功能完善" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: 短链接功能完善" />
   </component>
 </project>
