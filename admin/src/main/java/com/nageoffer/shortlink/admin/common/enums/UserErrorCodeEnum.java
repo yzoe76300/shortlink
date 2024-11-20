@@ -3,6 +3,8 @@ package com.nageoffer.shortlink.admin.common.enums;
 import com.nageoffer.shortlink.admin.common.convension.errorcode.IErrorCode;
 
 public enum UserErrorCodeEnum implements IErrorCode {
+
+    USER_TOKEN_FAIL("A000200", "用户Token验证失败"),
     USER_NULL("B000201","用户不存在"),
     USER_NAME_EXIST("B000202", "用户名已存在"),
     USER_SAVE_ERROR("B000203", "用户保存失败"),
