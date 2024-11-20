@@ -7,7 +7,13 @@
     <option name="showLibraryBeans" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 用户登录验证拦截器修改" />
+    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 项目打包">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/config/MyMetaObjectHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/config/MyMetaObjectHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/controller/ShortLinkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/controller/ShortLinkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/IShortLinkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/IShortLinkService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -107,12 +113,13 @@
       <recent name="C:\Users\yangz\Documents\java\shortlink\gateway\src\main\java\com\nageoffer\shortlink\gateway\controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.nageoffer.shortlink.project.dto.resp" />
       <recent name="" />
       <recent name="com.nageoffer.shortlink.project.config" />
       <recent name="com.nageoffer.shortlink.admin.dto.req" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ShortLinkAdminApplication">
+  <component name="RunManager" selected="Spring Boot.ShortLinkApplication">
     <configuration name="ShortLinkTableSharingTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ShortLinkTableSharingTest" />
       <module name="shortlink-project" />
@@ -174,9 +181,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.ShortLinkAdminApplication" />
         <item itemvalue="Spring Boot.ShortLinkApplication" />
         <item itemvalue="Application.ShortLinkTableSharingTest" />
+        <item itemvalue="Spring Boot.ShortLinkAdminApplication" />
         <item itemvalue="Application.UserTableSharingTest" />
       </list>
     </recent_temporary>
@@ -206,7 +213,7 @@
       <workItem from="1731633927216" duration="12184000" />
       <workItem from="1731721332796" duration="7830000" />
       <workItem from="1731808831826" duration="1062000" />
-      <workItem from="1731893484820" duration="30558000" />
+      <workItem from="1731893484820" duration="34304000" />
     </task>
     <task id="LOCAL-00001" summary="开发短链接系统用户注册相关功能">
       <option name="closed" value="true" />
@@ -376,7 +383,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732064406697</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="feature: 项目打包">
+      <option name="closed" value="true" />
+      <created>1732064965771</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1732064965771</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,6 +429,7 @@
     <MESSAGE value="feature: 重构短链接后管路径" />
     <MESSAGE value="feature: 短链接功能完善" />
     <MESSAGE value="feature: 用户登录验证拦截器修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: 用户登录验证拦截器修改" />
+    <MESSAGE value="feature: 项目打包" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: 项目打包" />
   </component>
 </project>

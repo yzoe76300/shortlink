@@ -23,4 +23,6 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         log.info("开始更新填充...");
         this.strictUpdateFill(metaObject, "updateTime", LocalDateTime.class, LocalDateTime.now());
     }
+
+
 }
