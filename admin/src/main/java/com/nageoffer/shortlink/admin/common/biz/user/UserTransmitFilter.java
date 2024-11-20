@@ -1,7 +1,7 @@
 package com.nageoffer.shortlink.admin.common.biz.user;
 
 import cn.hutool.core.util.StrUtil;
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import com.google.common.collect.Lists;
 import com.nageoffer.shortlink.admin.common.convension.exception.ClientException;
 import jakarta.servlet.*;
@@ -24,8 +24,8 @@ public class UserTransmitFilter implements Filter {
     private final StringRedisTemplate stringRedisTemplate;
 
     private static final List<String> IGNORE_URLS = Lists.newArrayList(
-            "api/short-link/admin/v1/user/login",
-            "api/short-link/admin/v1/user/check"
+            "/api/short-link/admin/v1/user/login",
+            "/api/short-link/admin/v1/user/check"
     );
 
     @Override

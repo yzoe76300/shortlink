@@ -66,11 +66,12 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
             }
             shortUriCreateRegisterCachePenetrationBloomFilter.add(shortLinkSuffix);
         }
-        return ShortLinkCreateRespDTO.builder()
+        ShortLinkCreateRespDTO respDTO = ShortLinkCreateRespDTO.builder()
                 .fullShortUrl(shortLinkDO.getFullShortUrl())
                 .originUrl(requestParam.getOriginUrl())
                 .gid(requestParam.getGid())
                 .build();
+        return respDTO;
     }
 
     @Override
