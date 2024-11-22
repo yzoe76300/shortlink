@@ -59,7 +59,10 @@ public class LinkDO extends BaseDO {
      * gid
      */
     private String gid;
-
+    /**
+     * gid
+     */
+    private String favicon;
     /**
      * enable_status
      */

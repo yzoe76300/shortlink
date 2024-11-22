@@ -1,4 +1,4 @@
-package com.nageoffer.shortlink.admin.remote.dto.req;
+package com.nageoffer.shortlink.project.dto.req;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -9,26 +9,22 @@ import java.util.Date;
 * 短链接创建请求实体类
 * */
 @Data
-public class ShortLinkCreateReqDTO {
+public class ShortLinkUpdateReqDTO {
 
-    /**
-     * domain
-     */
-    private String domain;
     /**
      * origin_url
      */
     private String originUrl;
 
+    /*
+    *  full_short_url
+    * */
+    private String fullShortUrl;
+
     /**
      * gid
      */
     private String gid;
-
-    /**
-     * created_type
-     */
-    private Integer createdType;
 
     /**
      * valid_date_type

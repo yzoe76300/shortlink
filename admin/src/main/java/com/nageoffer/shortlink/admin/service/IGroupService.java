@@ -15,6 +15,8 @@ public interface IGroupService extends IService<GroupDO> {
     /*
     * 新增短链接分组
     * */
+    public void saveGroup(String userName, String groupName);
+
     public void saveGroup(String groupName);
 
     List<ShortlinkGroupResponseDTO> getGroupList();
