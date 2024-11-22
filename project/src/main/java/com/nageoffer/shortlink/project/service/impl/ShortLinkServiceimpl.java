@@ -2,6 +2,7 @@ package com.nageoffer.shortlink.project.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -10,6 +11,7 @@ import com.nageoffer.shortlink.project.dao.entity.LinkDO;
 import com.nageoffer.shortlink.project.dao.mapper.linkMapper;
 import com.nageoffer.shortlink.project.dto.req.ShortLinkCreateReqDTO;
 import com.nageoffer.shortlink.project.dto.req.ShortLinkPageReqDTO;
+import com.nageoffer.shortlink.project.dto.resp.ShortLinkCountQueryRespDTO;
 import com.nageoffer.shortlink.project.dto.resp.ShortLinkCreateRespDTO;
 import com.nageoffer.shortlink.project.dto.resp.ShortLinkPageRespDTO;
 import com.nageoffer.shortlink.project.service.IShortLinkService;
@@ -18,6 +20,9 @@ import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
 import org.redisson.api.RBloomFilter;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 /*
 * 短链接接口实现层
@@ -28,6 +33,7 @@ import org.springframework.stereotype.Service;
 public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implements IShortLinkService {
 
     private final RBloomFilter<String> shortUriCreateRegisterCachePenetrationBloomFilter ;
+    private final linkMapper shortLinkMapper;
     /*
     * 创建短链接
     * */
@@ -83,6 +89,17 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
                 .orderByDesc(LinkDO::getCreateTime);
         IPage<LinkDO> resultPage = baseMapper.selectPage(requestParam, queryWrapper);
         return resultPage.convert(each -> BeanUtil.toBean(each, ShortLinkPageRespDTO.class));
+    }
+
+    @Override
+    public List<ShortLinkCountQueryRespDTO> listGroupShortLink(List<String> requestParam) {
+        QueryWrapper<LinkDO> queryWrapper = Wrappers.query(new LinkDO())
+                .select("gid,count(*) as shortLinkCount")
+                .in("gid", requestParam)
+                .eq("enable_status", 0)
+                .groupBy("gid");
+        List<Map<String, Object>> linkDOList = shortLinkMapper.selectMaps(queryWrapper);
+        return BeanUtil.copyToList(linkDOList, ShortLinkCountQueryRespDTO.class);
     }
 
     /*
