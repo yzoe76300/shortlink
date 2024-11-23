@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.nageoffer.shortlink.project.dao.entity.LinkDO;
 
 /*
-*
 * 短链接持久层
 * */
 public interface linkMapper extends BaseMapper<LinkDO> {

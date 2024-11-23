@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ShortLinkController {
     private ShortLinkRemoteService service = new ShortLinkRemoteService(){};
+
     /**
      * 远程创建短链分页数据
      * @param requestParam
@@ -35,11 +36,9 @@ public class ShortLinkController {
     /*
      *  修改短链接
      * */
-    @PutMapping("/api/short-link/admin/v1/update")
+    @PostMapping("/api/short-link/admin/v1/update")
     public Result<Void> updateShortLink(@RequestBody ShortLinkUpdateReqDTO requestParam){
         service.updateShortLink(requestParam);
         return Results.success();
     }
-
-
 }
