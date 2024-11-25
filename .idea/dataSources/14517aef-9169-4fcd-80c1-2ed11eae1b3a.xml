@@ -1002,7 +1002,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </schema>
     <schema id="290" parent="1" name="link">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-11-24.03:02:53</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-11-25.07:34:59</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="291" parent="1" name="mybatis">
@@ -1715,7 +1715,7 @@ username</ColNames>
       <UnderlyingIndexName>idx_unique_gid_username</UnderlyingIndexName>
     </key>
     <column id="463" parent="309" name="id">
-      <AutoIncrement>6</AutoIncrement>
+      <AutoIncrement>5</AutoIncrement>
       <DasType>bigint unsigned|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -2718,7 +2718,7 @@ username</ColNames>
       <UnderlyingIndexName>idx_unique_full_short_url</UnderlyingIndexName>
     </key>
     <column id="699" parent="324" name="id">
-      <AutoIncrement>13</AutoIncrement>
+      <AutoIncrement>14</AutoIncrement>
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -2803,7 +2803,7 @@ username</ColNames>
       <UnderlyingIndexName>idx_unique_full_short_url</UnderlyingIndexName>
     </key>
     <column id="719" parent="325" name="id">
-      <AutoIncrement>30</AutoIncrement>
+      <AutoIncrement>36</AutoIncrement>
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -3228,7 +3228,7 @@ username</ColNames>
       <UnderlyingIndexName>idx_unique_full_short_url</UnderlyingIndexName>
     </key>
     <column id="819" parent="330" name="id">
-      <AutoIncrement>10</AutoIncrement>
+      <AutoIncrement>9</AutoIncrement>
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -3549,7 +3549,7 @@ username</ColNames>
       <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
     <column id="894" parent="336" name="id">
-      <AutoIncrement>1860240867395878914</AutoIncrement>
+      <AutoIncrement>1860916660576968705</AutoIncrement>
       <DasType>bigint unsigned|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -3593,7 +3593,7 @@ username</ColNames>
       <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
     <column id="904" parent="338" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>1860529145550450689</AutoIncrement>
       <DasType>bigint unsigned|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -3615,7 +3615,7 @@ username</ColNames>
       <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
     <column id="909" parent="339" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>1860913645937688577</AutoIncrement>
       <DasType>bigint unsigned|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -3637,7 +3637,7 @@ username</ColNames>
       <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
     <column id="914" parent="340" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>1860914129415147522</AutoIncrement>
       <DasType>bigint unsigned|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -3659,7 +3659,7 @@ username</ColNames>
       <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
     <column id="919" parent="341" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>1860913108504739841</AutoIncrement>
       <DasType>bigint unsigned|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -3681,7 +3681,7 @@ username</ColNames>
       <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
     <column id="924" parent="342" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>1860914661143842818</AutoIncrement>
       <DasType>bigint unsigned|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -3703,7 +3703,7 @@ username</ColNames>
       <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
     <column id="929" parent="343" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>1860545599675019267</AutoIncrement>
       <DasType>bigint unsigned|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -3747,7 +3747,7 @@ username</ColNames>
       <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
     <column id="939" parent="345" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>1860914889167179778</AutoIncrement>
       <DasType>bigint unsigned|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -3769,7 +3769,7 @@ username</ColNames>
       <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
     <column id="944" parent="346" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>1860913211776892929</AutoIncrement>
       <DasType>bigint unsigned|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -3791,7 +3791,7 @@ username</ColNames>
       <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
     <column id="949" parent="347" name="id">
-      <AutoIncrement>1860232153498632194</AutoIncrement>
+      <AutoIncrement>1860232153498632193</AutoIncrement>
       <DasType>bigint unsigned|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4341,7 +4341,7 @@ username</ColNames>
       <UnderlyingIndexName>idx_unique_username</UnderlyingIndexName>
     </key>
     <column id="1077" parent="358" name="id">
-      <AutoIncrement>1856607848168652803</AutoIncrement>
+      <AutoIncrement>1856607848168652802</AutoIncrement>
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>

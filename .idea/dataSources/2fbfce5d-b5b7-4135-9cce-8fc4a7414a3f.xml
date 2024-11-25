@@ -22,8 +22,13 @@
     <schema id="15" parent="1" name="7"/>
     <schema id="16" parent="1" name="8"/>
     <schema id="17" parent="1" name="9"/>
-    <collection id="18" parent="2" name="login:yzy2"/>
-    <collection id="19" parent="2" name="userRegisterCachePenetrationBloomFilter"/>
-    <collection id="20" parent="2" name="{userRegisterCachePenetrationBloomFilter}:config"/>
+    <collection id="18" parent="2" name="127.0.0.1/3G8d9u"/>
+    <collection id="19" parent="2" name="127.0.0.1/3qeb7L"/>
+    <collection id="20" parent="2" name="127.0.0.1/80OQg"/>
+    <collection id="21" parent="2" name="login:yzy2"/>
+    <collection id="22" parent="2" name="short-link_goto_127.0.0.1/1N3XHj"/>
+    <collection id="23" parent="2" name="short-link_goto_127.0.0.1/zIogV"/>
+    <collection id="24" parent="2" name="userRegisterCachePenetrationBloomFilter"/>
+    <collection id="25" parent="2" name="{userRegisterCachePenetrationBloomFilter}:config"/>
   </database-model>
 </dataSource>
