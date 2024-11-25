@@ -29,6 +29,9 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.redisson.api.RBloomFilter;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
@@ -36,6 +39,8 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -232,20 +237,18 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
                     .eq(LinkDO::getDelFlag, 0)
                     .eq(LinkDO::getEnableStatus, 0);
             LinkDO shortLinkDO = baseMapper.selectOne(queryWrapper);
-            if (shortLinkDO != null){
-                if (shortLinkDO.getValidDate() != null && shortLinkDO.getValidDate().before(new Date())){
-                    // 短链接已过期, 设置空值
-                    stringRedisTemplate.opsForValue().set(String.format(GOTO_SHORT_LINK_KEY, fullShortUrl), "-", 30, TimeUnit.MINUTES);
-                    ((HttpServletResponse) response).sendRedirect("/page/notfound");
-                    return;
-                }
-                // 短链接存在, 储存OriginUrl至Redis中
-                stringRedisTemplate.opsForValue().set(
-                        String.format(GOTO_SHORT_LINK_KEY, fullShortUrl),
-                        shortLinkDO.getOriginUrl(),
-                        LinkUtil.getLinkCacheValidTime(shortLinkDO.getValidDate()), TimeUnit.MILLISECONDS);
-                ((HttpServletResponse) response).sendRedirect(shortLinkDO.getOriginUrl());
+            if (shortLinkDO == null && shortLinkDO.getValidDate().before(new Date())){
+                // 短链接已过期, 设置空值
+                stringRedisTemplate.opsForValue().set(String.format(GOTO_SHORT_LINK_KEY, fullShortUrl), "-", 30, TimeUnit.MINUTES);
+                ((HttpServletResponse) response).sendRedirect("/page/notfound");
+                return;
             }
+            // 短链接存在, 储存OriginUrl至Redis中
+            stringRedisTemplate.opsForValue().set(
+                    String.format(GOTO_SHORT_LINK_KEY, fullShortUrl),
+                    shortLinkDO.getOriginUrl(),
+                    LinkUtil.getLinkCacheValidTime(shortLinkDO.getValidDate()), TimeUnit.MILLISECONDS);
+            ((HttpServletResponse) response).sendRedirect(shortLinkDO.getOriginUrl());
         } finally {
             lock.unlock();
         }
@@ -274,5 +277,49 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
             customGenerateCount++;
         }
         return shortUri;
+    }
+
+    /**
+     * 获取网站的favicon图标链接
+     * @param url 网站的URL
+     * @return favicon图标链接，如果不存在则返回nulL
+     */
+    @SneakyThrows
+    private String getFavicon(String url) {
+        //创建URL对象
+        URL targetUrl = new URL(url);
+        //打开连接
+        HttpURLConnection connection = (HttpURLConnection) targetUrl.openConnection();
+        // 禁止自动处理重定向
+        connection.setInstanceFollowRedirects(false);
+        // 设置请求方法为GET
+        connection.setRequestMethod("GET");
+        //连接
+        connection.connect();
+        //获取响应码
+        int responseCode = connection.getResponseCode();
+        // 如果是重定向响应码
+        if (responseCode == HttpURLConnection.HTTP_MOVED_PERM || responseCode == HttpURLConnection.HTTP_MOVED_TEMP) {
+            //获取重定向的URL
+            String redirectUrl = connection.getHeaderField("Location");
+            //如果重定向URL不为空
+            if (redirectUrl != null) {
+                // 创建新的URL对象
+                URL newUrl = new URL(redirectUrl);//打开新的连接
+                connection = (HttpURLConnection) newUrl.openConnection();//设置请求方法为GET
+                connection.setRequestMethod("GET");//连接
+                connection.connect();//获取新的响应码
+                responseCode = connection.getResponseCode();
+            }
+        }
+        // 如果响应码为200(HTTP_OK)
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            Document document = Jsoup.connect(url).get();
+            Element faviconLink = document.select("link[rel~=(?i)^(shortcut )?icon]").first();
+            if (faviconLink != null) {
+                return faviconLink.attr("abs:href");
+            }
+        }
+        return null;
     }
 }
