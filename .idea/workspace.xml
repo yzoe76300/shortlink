@@ -7,9 +7,9 @@
     <option name="showLibraryBeans" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 短链接核心功能开发">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/14517aef-9169-4fcd-80c1-2ed11eae1b3a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/14517aef-9169-4fcd-80c1-2ed11eae1b3a.xml" afterDir="false" />
+    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="optimize: 短链接跳转原始连接开发缓存击穿功能">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/common/constant/RedisKeyConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/common/constant/RedisKeyConstant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,8 +180,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.ShortLinkApplication" />
         <item itemvalue="Spring Boot.ShortLinkAdminApplication" />
+        <item itemvalue="Spring Boot.ShortLinkApplication" />
         <item itemvalue="Application.ShortLinkTableSharingTest" />
         <item itemvalue="Application.UserTableSharingTest" />
       </list>
@@ -217,7 +217,7 @@
       <workItem from="1732238017523" duration="625000" />
       <workItem from="1732238659659" duration="7562000" />
       <workItem from="1732328634297" duration="9974000" />
-      <workItem from="1732417344912" duration="4588000" />
+      <workItem from="1732417344912" duration="9546000" />
     </task>
     <task id="LOCAL-00001" summary="开发短链接系统用户注册相关功能">
       <option name="closed" value="true" />
@@ -515,7 +515,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732352220189</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="optimize: 短链接跳转原始连接开发缓存击穿功能">
+      <option name="closed" value="true" />
+      <created>1732424373395</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1732424373395</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -533,7 +541,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feature: 短链接后管分组排序创建" />
     <MESSAGE value="feature: 用户登录时间修改为24h" />
     <MESSAGE value="feature: 用户系统上下文封装" />
     <MESSAGE value="feature: 用户系统上下文DTO" />
@@ -558,7 +565,8 @@
     <MESSAGE value="feature: 短链接服务开发修改功能" />
     <MESSAGE value="feature: 短链接后管开发短链接修改" />
     <MESSAGE value="feature: 短链接核心功能开发" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: 短链接核心功能开发" />
+    <MESSAGE value="optimize: 短链接跳转原始连接开发缓存击穿功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="optimize: 短链接跳转原始连接开发缓存击穿功能" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
