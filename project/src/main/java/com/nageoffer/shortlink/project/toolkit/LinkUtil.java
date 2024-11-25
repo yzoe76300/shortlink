@@ -16,7 +16,8 @@ public class LinkUtil {
     *  获取短链接有效期时间
     * */
     public static long getLinkCacheValidTime(Date ValidDate){
-        return Optional.ofNullable(ValidDate).map(each -> DateUtil.between(new Date(), each, DateUnit.MS))
+        return Optional.ofNullable(ValidDate)
+                .map(each -> DateUtil.between(new Date(), each, DateUnit.MS))
                 .orElse(DEFAULT_CACHE_VALID_TIME);
     }
 }
