@@ -26,7 +26,7 @@ public interface IShortLinkService extends IService<LinkDO> {
     ShortLinkCreateRespDTO createShortLink(ShortLinkCreateReqDTO requestParam);
 
     /**
-     *
+     * 分页查询短链接
      * @param requestParam
      * @return
      */
