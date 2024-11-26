@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.nageoffer.shortlink.project.dao.entity.LinkDO;
 import com.nageoffer.shortlink.project.dao.mapper.linkMapper;
 import com.nageoffer.shortlink.project.dto.req.RecycleBinSaveReqDTO;
-import com.nageoffer.shortlink.project.dto.req.ShortLinkPageReqDTO;
+import com.nageoffer.shortlink.project.dto.req.ShortLinkRecycleBinPageReqDTO;
 import com.nageoffer.shortlink.project.dto.resp.ShortLinkPageRespDTO;
 import com.nageoffer.shortlink.project.service.RecycleBinService;
 import lombok.RequiredArgsConstructor;
@@ -45,12 +45,12 @@ public class RecycleBinServiceImpl extends ServiceImpl<linkMapper, LinkDO> imple
     }
 
     @Override
-    public IPage<ShortLinkPageRespDTO> pageRecycleBin(ShortLinkPageReqDTO requestParam) {
+    public IPage<ShortLinkPageRespDTO> pageRecycleBin(ShortLinkRecycleBinPageReqDTO requestParam) {
         LambdaQueryWrapper<LinkDO> queryWrapper = Wrappers.lambdaQuery(LinkDO.class)
-                .eq(LinkDO::getGid, requestParam.getGid())
+                .in(LinkDO::getGid, requestParam.getGidList())
                 .eq(LinkDO::getEnableStatus, 1)
                 .eq(LinkDO::getDelFlag, 0)
-                .orderByDesc(LinkDO::getCreateTime);
+                .orderByDesc(LinkDO::getUpdateTime);
         IPage<LinkDO> resultPage = baseMapper.selectPage(requestParam, queryWrapper);
         return resultPage.convert(each ->
         {

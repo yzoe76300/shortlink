@@ -5,8 +5,9 @@ import com.nageoffer.shortlink.admin.common.convension.result.Result;
 import com.nageoffer.shortlink.admin.common.convension.result.Results;
 import com.nageoffer.shortlink.admin.remote.ShortLinkRemoteService;
 import com.nageoffer.shortlink.admin.remote.dto.req.RecycleBinSaveReqDTO;
-import com.nageoffer.shortlink.admin.remote.dto.req.ShortLinkPageReqDTO;
+import com.nageoffer.shortlink.admin.remote.dto.req.ShortLinkRecycleBinPageReqDTO;
 import com.nageoffer.shortlink.admin.remote.dto.resp.ShortLinkPageRespDTO;
+import com.nageoffer.shortlink.admin.service.RecycleBinService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,9 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RecycleBinController {
     private ShortLinkRemoteService service = new ShortLinkRemoteService(){};
+    private final RecycleBinService recycleBinService;
 
-
-    @PostMapping("/api/short-link/v1/recycle-bin/save")
+    @PostMapping("/api/short-link/admin/v1/recycle-bin/save")
     public Result<Void> saveRecycleBin(@RequestBody RecycleBinSaveReqDTO requestParam){
         service.saveRecycleBin(requestParam);
         return Results.success();
@@ -32,7 +33,7 @@ public class RecycleBinController {
      * 远程查询回收站短链分页数据
      * */
     @GetMapping("/api/short-link/admin/v1/recycle-bin/page")
-    public Result<IPage<ShortLinkPageRespDTO>> pageRecycleBin(ShortLinkPageReqDTO requestParam) {
-        return service.pageRecycleBin(requestParam);
+    public Result<IPage<ShortLinkPageRespDTO>> pageRecycleBin(ShortLinkRecycleBinPageReqDTO requestParam) {
+        return recycleBinService.pageRecycleBin(requestParam);
     }
 }
