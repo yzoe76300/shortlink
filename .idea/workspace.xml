@@ -7,13 +7,10 @@
     <option name="showLibraryBeans" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 短链接监控">
+    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 短链接监控之地区访问数据">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/972f5178-eec3-4339-b36d-a0f1d571c0fa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/972f5178-eec3-4339-b36d-a0f1d571c0fa.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/common/constant/ShortLinkConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/common/constant/ShortLinkConstant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/toolkit/LinkUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/toolkit/LinkUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +24,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package-info" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -117,11 +114,11 @@
       <recent name="C:\Users\yangz\Documents\java\shortlink\project\src\main\java\com\nageoffer\shortlink\project\common" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.nageoffer.shortlink.project.dao.entity" />
       <recent name="com.nageoffer.shortlink.admin.remote.dto.req" />
       <recent name="com.nageoffer.shortlink.project.dto.req" />
       <recent name="com.nageoffer.shortlink.admin.dto.req" />
       <recent name="com.nageoffer.shortlink.admin.controller" />
-      <recent name="com.nageoffer.shortlink.project.common.enums" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ShortLinkApplication">
@@ -186,8 +183,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.ShortLinkAdminApplication" />
         <item itemvalue="Spring Boot.ShortLinkApplication" />
+        <item itemvalue="Spring Boot.ShortLinkAdminApplication" />
         <item itemvalue="Application.ShortLinkTableSharingTest" />
         <item itemvalue="Application.UserTableSharingTest" />
       </list>
@@ -224,7 +221,7 @@
       <workItem from="1732238659659" duration="7562000" />
       <workItem from="1732328634297" duration="9974000" />
       <workItem from="1732417344912" duration="14083000" />
-      <workItem from="1732519619541" duration="45382000" />
+      <workItem from="1732519619541" duration="47765000" />
     </task>
     <task id="LOCAL-00001" summary="开发短链接系统用户注册相关功能">
       <option name="closed" value="true" />
@@ -602,7 +599,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732611398161</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="feature: 短链接监控之地区访问数据">
+      <option name="closed" value="true" />
+      <created>1732686580140</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1732686580140</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -620,7 +625,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feature: 重构短链接后管路径" />
     <MESSAGE value="feature: 短链接功能完善" />
     <MESSAGE value="feature: 用户登录验证拦截器修改" />
     <MESSAGE value="feature: 项目打包" />
@@ -645,7 +649,8 @@
     <MESSAGE value="refactor: 重构短链接回收站分页" />
     <MESSAGE value="feature: 回收站短链接移除功能" />
     <MESSAGE value="feature: 短链接监控" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: 短链接监控" />
+    <MESSAGE value="feature: 短链接监控之地区访问数据" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: 短链接监控之地区访问数据" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -657,8 +662,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java</url>
-          <line>334</line>
-          <option name="timeStamp" value="73" />
+          <line>344</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java</url>
+          <line>352</line>
+          <option name="timeStamp" value="75" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
