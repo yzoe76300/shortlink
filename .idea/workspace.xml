@@ -7,8 +7,9 @@
     <option name="showLibraryBeans" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 短链接监控之地区访问数据">
+    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 开发短链接统计操作系统">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/972f5178-eec3-4339-b36d-a0f1d571c0fa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/972f5178-eec3-4339-b36d-a0f1d571c0fa.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/toolkit/LinkUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/toolkit/LinkUtil.java" afterDir="false" />
     </list>
@@ -114,11 +115,11 @@
       <recent name="C:\Users\yangz\Documents\java\shortlink\project\src\main\java\com\nageoffer\shortlink\project\common" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.nageoffer.shortlink.project.dao.mapper" />
       <recent name="com.nageoffer.shortlink.project.dao.entity" />
       <recent name="com.nageoffer.shortlink.admin.remote.dto.req" />
       <recent name="com.nageoffer.shortlink.project.dto.req" />
       <recent name="com.nageoffer.shortlink.admin.dto.req" />
-      <recent name="com.nageoffer.shortlink.admin.controller" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ShortLinkApplication">
@@ -221,7 +222,7 @@
       <workItem from="1732238659659" duration="7562000" />
       <workItem from="1732328634297" duration="9974000" />
       <workItem from="1732417344912" duration="14083000" />
-      <workItem from="1732519619541" duration="47765000" />
+      <workItem from="1732519619541" duration="51773000" />
     </task>
     <task id="LOCAL-00001" summary="开发短链接系统用户注册相关功能">
       <option name="closed" value="true" />
@@ -607,7 +608,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732686580140</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="feature: 开发短链接统计操作系统">
+      <option name="closed" value="true" />
+      <created>1732690588189</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1732690588189</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -625,7 +634,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feature: 短链接功能完善" />
     <MESSAGE value="feature: 用户登录验证拦截器修改" />
     <MESSAGE value="feature: 项目打包" />
     <MESSAGE value="feature: 开发短链接分组查询功能" />
@@ -650,7 +658,8 @@
     <MESSAGE value="feature: 回收站短链接移除功能" />
     <MESSAGE value="feature: 短链接监控" />
     <MESSAGE value="feature: 短链接监控之地区访问数据" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: 短链接监控之地区访问数据" />
+    <MESSAGE value="feature: 开发短链接统计操作系统" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: 开发短链接统计操作系统" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -659,16 +668,6 @@
           <url>file://$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dao/mapper/LinkAccessStatsMapper.java</url>
           <line>10</line>
           <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java</url>
-          <line>344</line>
-          <option name="timeStamp" value="74" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java</url>
-          <line>352</line>
-          <option name="timeStamp" value="75" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
