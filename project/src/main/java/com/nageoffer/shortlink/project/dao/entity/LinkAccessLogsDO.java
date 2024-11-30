@@ -50,4 +50,20 @@ public class LinkAccessLogsDO extends BaseDO {
      * ip
      */
     private String ip;
+
+    /**
+     * network
+     */
+    private String network;
+
+    /**
+     * device
+     */
+    private String device;
+
+    /**
+     * locale
+     */
+    private String locale;
+
 }
