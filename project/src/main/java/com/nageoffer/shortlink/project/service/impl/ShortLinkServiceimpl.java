@@ -102,6 +102,9 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
                         .shortUri(shortLinkSuffix)
                         .describe(requestParam.getDescribe())
                         .enableStatus(0)
+                        .totalPv(0)
+                        .totalUv(0)
+                        .totalUip(0)
                         .fullShortUrl(fullShortUrl)
                         .build();
         shortLinkDO.setFullShortUrl(fullShortUrl);
@@ -403,6 +406,8 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
                         .browser(browser)
                         .build();
                 linkAccessLogsMapper.insert(linkAccessLogsDO);
+
+                baseMapper.incrementStats(gid, fullShortUrl, 1, uvFirstFlag.get() ? 1 : 0, uipFirstFlag ? 1 : 0);
             }
         } catch (Throwable e) {
             log.error("短链接统计功能异常", e);
