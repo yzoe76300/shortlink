@@ -7,13 +7,19 @@
     <option name="showLibraryBeans" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 开发短链接监控之高频访问ip功能">
+    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 开发短链接监控之相关用户访问明细">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/14517aef-9169-4fcd-80c1-2ed11eae1b3a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/14517aef-9169-4fcd-80c1-2ed11eae1b3a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/2fbfce5d-b5b7-4135-9cce-8fc4a7414a3f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2fbfce5d-b5b7-4135-9cce-8fc4a7414a3f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/972f5178-eec3-4339-b36d-a0f1d571c0fa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/972f5178-eec3-4339-b36d-a0f1d571c0fa.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dao/entity/LinkAccessLogsDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dao/entity/LinkAccessLogsDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/test/java/com/nageoffer/shortlink/admin/test/UserTableSharingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/test/java/com/nageoffer/shortlink/admin/test/UserTableSharingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/controller/ShortLinkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/controller/ShortLinkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dao/entity/LinkDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dao/entity/LinkDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dao/mapper/LinkAccessLogsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dao/mapper/LinkAccessLogsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dto/req/ShortLinkPageReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dto/req/ShortLinkPageReqDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dto/resp/ShortLinkPageRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dto/resp/ShortLinkPageRespDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/resources/shardingsphere-config-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/resources/shardingsphere-config-dev.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,44 +70,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ShortLinkTableSharingTest.executor&quot;: &quot;Run&quot;,
-    &quot;Application.UserTableSharingTest.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.shortlink-all [clean,package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.shortlink-all [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.shortlink-all [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.shortlink-all [package].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.AdminApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ShortLinkAdminApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;Spring Boot.ShortLinkApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/yangz/Documents/java/shortlink/project/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ShortLinkTableSharingTest.executor": "Run",
+    "Application.UserTableSharingTest.executor": "Run",
+    "Maven.shortlink-all [clean,package].executor": "Run",
+    "Maven.shortlink-all [clean].executor": "Run",
+    "Maven.shortlink-all [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
+    "Maven.shortlink-all [package].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.AdminApplication.executor": "Run",
+    "Spring Boot.ShortLinkAdminApplication.executor": "Debug",
+    "Spring Boot.ShortLinkApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/yangz/Documents/java/shortlink/project/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql_aurora_aws&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql_aurora_aws"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -117,14 +123,14 @@
       <recent name="C:\Users\yangz\Documents\java\shortlink\project\src\main\java\com\nageoffer\shortlink\project\common" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.nageoffer.shortlink.project.dto.req" />
+      <recent name="com.nageoffer.shortlink.project.dao.mapper" />
+      <recent name="com.nageoffer.shortlink.project.dto.resp" />
       <recent name="com.nageoffer.shortlink.project.service.impl" />
       <recent name="com.nageoffer.shortlink.project.service" />
-      <recent name="com.nageoffer.shortlink.project.controller" />
-      <recent name="com.nageoffer.shortlink.project.dao.entity" />
-      <recent name="com.nageoffer.shortlink.project.dao.mapper" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ShortLinkApplication">
+  <component name="RunManager" selected="Application.UserTableSharingTest">
     <configuration name="ShortLinkTableSharingTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ShortLinkTableSharingTest" />
       <module name="shortlink-project" />
@@ -186,10 +192,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.UserTableSharingTest" />
         <item itemvalue="Spring Boot.ShortLinkApplication" />
         <item itemvalue="Spring Boot.ShortLinkAdminApplication" />
         <item itemvalue="Application.ShortLinkTableSharingTest" />
-        <item itemvalue="Application.UserTableSharingTest" />
       </list>
     </recent_temporary>
   </component>
@@ -226,15 +232,8 @@
       <workItem from="1732417344912" duration="14083000" />
       <workItem from="1732519619541" duration="56747000" />
       <workItem from="1732846295058" duration="922000" />
-      <workItem from="1732931447609" duration="3607000" />
-    </task>
-    <task id="LOCAL-00002" summary="开发短链接系统通用持久层实体填充对象">
-      <option name="closed" value="true" />
-      <created>1731487009642</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1731487009642</updated>
+      <workItem from="1732931447609" duration="11661000" />
+      <workItem from="1733018952557" duration="6075000" />
     </task>
     <task id="LOCAL-00003" summary="开发短链接系统用户模块相关配置">
       <option name="closed" value="true" />
@@ -620,7 +619,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732694550438</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="feature: 开发短链接监控之相关用户访问明细">
+      <option name="closed" value="true" />
+      <created>1732939379759</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1732939379760</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -638,7 +645,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feature: 项目打包" />
     <MESSAGE value="feature: 开发短链接分组查询功能" />
     <MESSAGE value="feature: 短链接分页接口创建时间以及时间序列化" />
     <MESSAGE value="feature: 短链接后台管理系统调用相关接口" />
@@ -663,18 +669,10 @@
     <MESSAGE value="feature: 短链接监控之地区访问数据" />
     <MESSAGE value="feature: 开发短链接统计操作系统" />
     <MESSAGE value="feature: 开发短链接监控之高频访问ip功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: 开发短链接监控之高频访问ip功能" />
+    <MESSAGE value="feature: 开发短链接监控之相关用户访问明细" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: 开发短链接监控之相关用户访问明细" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dao/mapper/LinkAccessStatsMapper.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.apache.catalina.connector.Response" memberName="coyoteResponse" />

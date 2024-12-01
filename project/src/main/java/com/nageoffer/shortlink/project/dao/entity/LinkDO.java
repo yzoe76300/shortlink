@@ -1,13 +1,15 @@
 package com.nageoffer.shortlink.project.dao.entity;
 
-import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.nageoffer.shortlink.project.common.database.BaseDO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -88,24 +90,16 @@ public class LinkDO extends BaseDO {
      */
     @TableField("`describe`")
     private String describe;
-
-
-    /**
-     * create_time
-     */
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
-
-    /**
-     * del_flag
-     */
-    @TableField(fill = FieldFill.INSERT)
-    private Integer delFlag;
-
-    /**
-     * update_time
-     */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
-
+    /*
+    *  历史PV
+    * */
+    private Integer totalPv;
+    /*
+     *  历史UV
+     * */
+    private Integer totalUv;
+    /*
+     *  历史UIP
+     * */
+    private Integer totalUip;
 }

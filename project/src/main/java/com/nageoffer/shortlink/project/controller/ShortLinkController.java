@@ -21,9 +21,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ShortLinkController {
     private final IShortLinkService shortLinkService;
-
-
-
     /**
      * 短链接跳转原始链接
      */
