@@ -1,7 +1,9 @@
 package com.nageoffer.shortlink.project.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.nageoffer.shortlink.project.dao.entity.LinkDO;
+import com.nageoffer.shortlink.project.dto.req.ShortLinkPageReqDTO;
 import org.apache.ibatis.annotations.Param;
 
 /*
@@ -13,4 +15,5 @@ public interface linkMapper extends BaseMapper<LinkDO> {
                         @Param("totalPv") Integer totalPv,
                         @Param("totalUv") Integer totalUv,
                         @Param("totalUip") Integer totalUip);
+    IPage<LinkDO> pageLink(ShortLinkPageReqDTO requestParam);
 }
