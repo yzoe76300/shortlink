@@ -17,6 +17,8 @@ spring:
       suffix: .html
 
 short-link:
+  domain:
+    default: 127.0.0.1:8001
   stats:
     local:
       amap-key: ed8877b1826b3938c2fdfaa9fdf4b37f
