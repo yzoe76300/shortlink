@@ -495,7 +495,7 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
             // 使用毫秒数避免冲突
             originUrl += System.currentTimeMillis();
             shortUri = HashUtil.hashToBase62(originUrl);
-            if (!shortUriCreateRegisterCachePenetrationBloomFilter.contains(requestParam.getDomain() + "/" + shortUri)){
+            if (!shortUriCreateRegisterCachePenetrationBloomFilter.contains(createShortLinkDefaultDomain+ "/" + shortUri)){
                 break;
             }
             LambdaQueryWrapper<LinkDO> queryWrapper = Wrappers.lambdaQuery(LinkDO.class)
