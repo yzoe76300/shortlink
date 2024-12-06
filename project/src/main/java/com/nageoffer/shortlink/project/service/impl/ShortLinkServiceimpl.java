@@ -15,8 +15,10 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.nageoffer.shortlink.project.common.convension.exception.ClientException;
 import com.nageoffer.shortlink.project.common.convension.exception.ServiceException;
 import com.nageoffer.shortlink.project.common.enums.ValiDateTypeEnum;
+import com.nageoffer.shortlink.project.config.GotoDomainWhiteListConfiguration;
 import com.nageoffer.shortlink.project.dao.entity.*;
 import com.nageoffer.shortlink.project.dao.mapper.*;
 import com.nageoffer.shortlink.project.dto.req.ShortLinkBatchCreateReqDTO;
@@ -53,8 +55,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static com.nageoffer.shortlink.project.common.constant.RedisKeyConstant.GOTO_SHORT_LINK_KEY;
-import static com.nageoffer.shortlink.project.common.constant.RedisKeyConstant.LOCK_GOTO_SHORT_LINK_KEY;
+import static com.nageoffer.shortlink.project.common.constant.RedisKeyConstant.*;
 import static com.nageoffer.shortlink.project.common.constant.ShortLinkConstant.AMAP_REMOTE_URL;
 
 /*
@@ -78,6 +79,7 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
     private final LinkDeviceStatsMapper linkDeviceStatsMapper;
     private final LinkNetworkStatsMapper linkNetworkStatsMapper;
     private final LinkStatsTodayMapper linkStatsTodayMapper;
+    private final GotoDomainWhiteListConfiguration gotoDomainWhiteListConfiguration;
     /*
     *  默认高德key
     * */
@@ -93,6 +95,7 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
     * */
     @Override
     public ShortLinkCreateRespDTO createShortLink(ShortLinkCreateReqDTO requestParam) {
+        verificationWhitelist(requestParam.getOriginUrl());
         String shortLinkSuffix = generateSuffix(requestParam);
         String fullShortUrl = new StringBuilder(createShortLinkDefaultDomain)
                                 .append("/")
@@ -203,7 +206,7 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
     @Override
     public void updateShortLink(ShortLinkUpdateReqDTO requestParam) {
         LambdaQueryWrapper<LinkDO> queryWrapper = Wrappers.lambdaQuery(LinkDO.class)
-                .eq(LinkDO::getGid, requestParam.getGid())
+                .eq(LinkDO::getGid, requestParam.getOriginGid())
                 .eq(LinkDO::getFullShortUrl, requestParam.getFullShortUrl())
                 .eq(LinkDO::getDelFlag, 0)
                 .eq(LinkDO::getEnableStatus, 0);
@@ -244,6 +247,17 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
                 baseMapper.insert(shortLinkDO);
             }
 
+            if (!Objects.equals(hasShortLinkDO.getValidDateType(), requestParam.getValidDateType())
+                    || !Objects.equals(hasShortLinkDO.getValidDate(), requestParam.getValidDate())
+                    || !Objects.equals(hasShortLinkDO.getOriginUrl(), requestParam.getOriginUrl())) {
+                stringRedisTemplate.delete(String.format(GOTO_SHORT_LINK_KEY, requestParam.getFullShortUrl()));
+                Date currentDate = new Date();
+                if (hasShortLinkDO.getValidDate() != null && hasShortLinkDO.getValidDate().before(currentDate)) {
+                    if (Objects.equals(requestParam.getValidDateType(), ValiDateTypeEnum.PERMANENT.getType()) || requestParam.getValidDate().after(currentDate)) {
+                        stringRedisTemplate.delete(String.format(GOTO_IS_NULL_SHORT_LINK_KEY, requestParam.getFullShortUrl()));
+                    }
+                }
+            }
         }
 
     }
@@ -269,7 +283,7 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
             ((HttpServletResponse) response).sendRedirect("/page/notfound");
             return;
         }
-        String gotoIsNullShortLink = stringRedisTemplate.opsForValue().get(String.format(GOTO_SHORT_LINK_KEY, fullShortUrl));
+        String gotoIsNullShortLink = stringRedisTemplate.opsForValue().get(String.format(GOTO_IS_NULL_SHORT_LINK_KEY, fullShortUrl));
         if (StrUtil.isNotBlank(gotoIsNullShortLink)){
             ((HttpServletResponse) response).sendRedirect("/page/notfound");
             return;
@@ -283,12 +297,17 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
                 ((HttpServletResponse) response).sendRedirect(originalLink);
                 return;
             }
+            gotoIsNullShortLink = stringRedisTemplate.opsForValue().get(String.format(GOTO_IS_NULL_SHORT_LINK_KEY, fullShortUrl));
+            if (StrUtil.isNotBlank(gotoIsNullShortLink)) {
+                ((HttpServletResponse) response).sendRedirect("/page/notfound");
+                return;
+            }
             LambdaQueryWrapper<ShortLinkGoToDO> linkGoToQueryWrapper = Wrappers.lambdaQuery(ShortLinkGoToDO.class)
                     .eq(ShortLinkGoToDO::getFullShortUrl, fullShortUrl);
             ShortLinkGoToDO shortLinkGoToDO = shortLinkGoToMapper.selectOne(linkGoToQueryWrapper);
             if (shortLinkGoToDO == null){
                 // 短链接不存在, 设置空值
-                stringRedisTemplate.opsForValue().set(String.format(GOTO_SHORT_LINK_KEY, fullShortUrl), "-", 30, TimeUnit.MINUTES);
+                stringRedisTemplate.opsForValue().set(String.format(GOTO_IS_NULL_SHORT_LINK_KEY, fullShortUrl), "-", 30, TimeUnit.MINUTES);
                 ((HttpServletResponse) response).sendRedirect("/page/notfound");
                 return;
             }
@@ -298,9 +317,9 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
                     .eq(LinkDO::getDelFlag, 0)
                     .eq(LinkDO::getEnableStatus, 0);
             LinkDO shortLinkDO = baseMapper.selectOne(queryWrapper);
-            if (shortLinkDO == null && shortLinkDO.getValidDate().before(new Date())){
-                // 短链接已过期, 设置空值
-                stringRedisTemplate.opsForValue().set(String.format(GOTO_SHORT_LINK_KEY, fullShortUrl), "-", 30, TimeUnit.MINUTES);
+            if (shortLinkDO == null && shortLinkDO.getValidDate() != null && shortLinkDO.getValidDate().before(new Date())){
+                // 短链接已过期,设置空值
+                stringRedisTemplate.opsForValue().set(String.format(GOTO_IS_NULL_SHORT_LINK_KEY, fullShortUrl), "-", 30, TimeUnit.MINUTES);
                 ((HttpServletResponse) response).sendRedirect("/page/notfound");
                 return;
             }
@@ -530,5 +549,20 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
             }
         }
         return null;
+    }
+
+    private void verificationWhitelist(String originUrl) {
+        Boolean enable = gotoDomainWhiteListConfiguration.getEnable();
+        if (enable == null || !enable) {
+            return;
+        }
+        String domain = LinkUtil.extractDomain(originUrl);
+        if (StrUtil.isBlank(domain)) {
+            throw new ClientException("跳转链接填写错误");
+        }
+        List<String> details = gotoDomainWhiteListConfiguration.getDetails();
+        if (!details.contains(domain)) {
+            throw new ClientException("演示环境为避免恶意攻击，请生成以下网站跳转链接：" + gotoDomainWhiteListConfiguration.getNames());
+        }
     }
 }
