@@ -7,18 +7,10 @@
     <option name="showLibraryBeans" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 批量创建短链接功能">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/14517aef-9169-4fcd-80c1-2ed11eae1b3a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/14517aef-9169-4fcd-80c1-2ed11eae1b3a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2fbfce5d-b5b7-4135-9cce-8fc4a7414a3f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2fbfce5d-b5b7-4135-9cce-8fc4a7414a3f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/remote/ShortLinkRemoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/remote/ShortLinkRemoteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dto/req/ShortLinkUpdateReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/dto/req/ShortLinkUpdateReqDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/toolkit/LinkUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/toolkit/LinkUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/test/java/ShortLinkTableSharingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/test/java/ShortLinkTableSharingTest.java" afterDir="false" />
+    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 用户多台客户端进行登录以及前端代码">
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/constant/RedisCacheConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/constant/RedisCacheConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/service/impl/GroupServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/service/impl/GroupServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,15 +229,7 @@
       <workItem from="1733018952557" duration="10878000" />
       <workItem from="1733056963440" duration="5973000" />
       <workItem from="1733104430352" duration="30528000" />
-      <workItem from="1733448867682" duration="6256000" />
-    </task>
-    <task id="LOCAL-00009" summary="feature: 用户登录时间修改为24h">
-      <option name="closed" value="true" />
-      <created>1731725127849</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1731725127849</updated>
+      <workItem from="1733448867682" duration="8461000" />
     </task>
     <task id="LOCAL-00010" summary="feature: 用户系统上下文封装">
       <option name="closed" value="true" />
@@ -631,7 +615,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733206132905</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="feature: 用户多台客户端进行登录以及前端代码">
+      <option name="closed" value="true" />
+      <created>1733470187994</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1733470187994</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,8 +641,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feature: 优化后管远程调用包目录" />
-    <MESSAGE value="feature: 短链接分组列表查询短链接数量" />
     <MESSAGE value="feature: 注册用户后默认创建对应分组" />
     <MESSAGE value="feature: 短链接服务开发修改功能" />
     <MESSAGE value="feature: 短链接后管开发短链接修改" />
@@ -674,7 +664,9 @@
     <MESSAGE value="feature: 短链接监控汇总统计开发，未完成版本" />
     <MESSAGE value="feature: 短链接监控汇总统计开发完成和分组查询短链接监控" />
     <MESSAGE value="feature: 批量创建短链接功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: 批量创建短链接功能" />
+    <MESSAGE value="feature: 用户多台客户端进行登录" />
+    <MESSAGE value="feature: 用户多台客户端进行登录以及前端代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: 用户多台客户端进行登录以及前端代码" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
