@@ -7,12 +7,8 @@
     <option name="showLibraryBeans" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 短链接监控消费幂处理">
+    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="optimize: 构建redis 缓存key的规则">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/biz/user/UserTransmitFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/biz/user/UserTransmitFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/constant/RedisCacheConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/constant/RedisCacheConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/common/constant/RedisKeyConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/common/constant/RedisKeyConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/mq/consumer/ShortLinkStatsSaveConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/mq/consumer/ShortLinkStatsSaveConsumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -252,15 +248,7 @@
       <workItem from="1733104430352" duration="30528000" />
       <workItem from="1733448867682" duration="14520000" />
       <workItem from="1733480856205" duration="348000" />
-      <workItem from="1733536256539" duration="17283000" />
-    </task>
-    <task id="LOCAL-00015" summary="feature: 用户登录拦截器忽略登录接口">
-      <option name="closed" value="true" />
-      <created>1731728912983</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1731728912983</updated>
+      <workItem from="1733536256539" duration="19299000" />
     </task>
     <task id="LOCAL-00016" summary="feature: 开发短链接系统分组修改功能">
       <option name="closed" value="true" />
@@ -646,7 +634,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733713866207</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="optimize: 构建redis 缓存key的规则">
+      <option name="closed" value="true" />
+      <created>1733732550202</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1733732550202</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,7 +660,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="optimize: 短链接跳转原始连接开发缓存击穿功能" />
     <MESSAGE value="optimize: 短链接创建缓存预热" />
     <MESSAGE value="feature: 短链接跳转时如果已过有效期设置为为空" />
     <MESSAGE value="refactor: 重构短链接不存在跳转提示" />
@@ -689,7 +684,8 @@
     <MESSAGE value="optimize: 修复短链接布隆过滤器逻辑存在问题" />
     <MESSAGE value="feature: 熔断和限流" />
     <MESSAGE value="feature: 短链接监控消费幂处理" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: 短链接监控消费幂处理" />
+    <MESSAGE value="optimize: 构建redis 缓存key的规则" />
+    <option name="LAST_COMMIT_MESSAGE" value="optimize: 构建redis 缓存key的规则" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

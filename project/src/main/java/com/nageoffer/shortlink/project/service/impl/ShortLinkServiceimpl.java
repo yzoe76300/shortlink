@@ -90,9 +90,11 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
     * */
     @Value(value = "${short-link.domain.default}")
     private String createShortLinkDefaultDomain;
+
     /*
     * 创建短链接
     * */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public ShortLinkCreateRespDTO createShortLink(ShortLinkCreateReqDTO requestParam) {
         verificationWhitelist(requestParam.getOriginUrl());
@@ -127,14 +129,9 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
             baseMapper.insert(shortLinkDO);
             shortLinkGoToMapper.insert(shortLinkGoToDO);
         } catch (Exception ex) {
-            LambdaQueryWrapper<LinkDO> queryWrapper = Wrappers.lambdaQuery(LinkDO.class)
-                    .eq(LinkDO::getFullShortUrl, fullShortUrl);
-            LinkDO hasShortLink = baseMapper.selectOne(queryWrapper);
-            if (hasShortLink != null){
-                // 数据库确实存在相同的短链接
-                log.warn("短链接: " + fullShortUrl + " 已存在，请勿重复创建");
-                throw new ServiceException("短链接重复生成");
-            }
+            // 数据库确实存在相同的短链接
+            log.warn("短链接: " + fullShortUrl + " 已存在，请勿重复创建");
+            throw new ServiceException(String.format("短链接: %s 已存在，请勿重复创建", fullShortUrl));
         }
         stringRedisTemplate.opsForValue().set(
                 String.format(GOTO_SHORT_LINK_KEY, fullShortUrl),
@@ -493,14 +490,12 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
             }
             String originUrl = requestParam.getOriginUrl();
             // 使用毫秒数避免冲突
-            originUrl += System.currentTimeMillis();
+            originUrl += UUID.randomUUID().toString();
             shortUri = HashUtil.hashToBase62(originUrl);
             if (!shortUriCreateRegisterCachePenetrationBloomFilter.contains(createShortLinkDefaultDomain+ "/" + shortUri)){
                 break;
             }
-            LambdaQueryWrapper<LinkDO> queryWrapper = Wrappers.lambdaQuery(LinkDO.class)
-                    .eq(LinkDO::getFullShortUrl, requestParam.getDomain() + "/" + shortUri);
-            LinkDO linkDO = baseMapper.selectOne(queryWrapper);
+
             customGenerateCount++;
         }
         return shortUri;
