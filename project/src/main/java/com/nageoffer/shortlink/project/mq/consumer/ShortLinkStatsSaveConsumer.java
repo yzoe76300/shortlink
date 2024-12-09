@@ -23,6 +23,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpUtil;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.nageoffer.shortlink.project.common.convension.exception.ServiceException;
 import com.nageoffer.shortlink.project.dao.entity.*;
@@ -46,6 +47,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import static com.nageoffer.shortlink.project.common.constant.RedisKeyConstant.LOCK_GID_UPDATE_KEY;
 import static com.nageoffer.shortlink.project.common.constant.ShortLinkConstant.AMAP_REMOTE_URL;
 
 /**
@@ -105,9 +107,9 @@ public class ShortLinkStatsSaveConsumer implements StreamListener<String, MapRec
         RLock rLock = readWriteLock.readLock();
         rLock.lock();
         try {
-            LambdaQueryWrapper<ShortLinkGotoDO> queryWrapper = Wrappers.lambdaQuery(ShortLinkGotoDO.class)
-                    .eq(ShortLinkGotoDO::getFullShortUrl, fullShortUrl);
-            ShortLinkGotoDO shortLinkGotoDO = shortLinkGotoMapper.selectOne(queryWrapper);
+            LambdaQueryWrapper<ShortLinkGoToDO> queryWrapper = Wrappers.lambdaQuery(ShortLinkGoToDO.class)
+                    .eq(ShortLinkGoToDO::getFullShortUrl, fullShortUrl);
+            ShortLinkGoToDO shortLinkGotoDO = shortLinkGotoMapper.selectOne(queryWrapper);
             String gid = shortLinkGotoDO.getGid();
             Date currentDate = statsRecord.getCurrentDate();
             int hour = DateUtil.hour(currentDate, true);
@@ -134,7 +136,7 @@ public class ShortLinkStatsSaveConsumer implements StreamListener<String, MapRec
             if (StrUtil.isNotBlank(infoCode) && StrUtil.equals(infoCode, "10000")) {
                 String province = localeResultObj.getString("province");
                 boolean unknownFlag = StrUtil.equals(province, "[]");
-                LinkLocaleStatsDO linkLocaleStatsDO = LinkLocaleStatsDO.builder()
+                LinkLocalStatsDO linkLocaleStatsDO = LinkLocalStatsDO.builder()
                         .province(actualProvince = unknownFlag ? actualProvince : province)
                         .city(actualCity = unknownFlag ? actualCity : localeResultObj.getString("city"))
                         .adcode(unknownFlag ? "未知" : localeResultObj.getString("adcode"))
@@ -143,7 +145,7 @@ public class ShortLinkStatsSaveConsumer implements StreamListener<String, MapRec
                         .country("中国")
                         .date(currentDate)
                         .build();
-                linkLocaleStatsMapper.shortLinkLocaleState(linkLocaleStatsDO);
+                linkLocaleStatsMapper.shortLinkLocalStats(linkLocaleStatsDO);
             }
             LinkOsStatsDO linkOsStatsDO = LinkOsStatsDO.builder()
                     .os(statsRecord.getOs())
@@ -151,14 +153,14 @@ public class ShortLinkStatsSaveConsumer implements StreamListener<String, MapRec
                     .fullShortUrl(fullShortUrl)
                     .date(currentDate)
                     .build();
-            linkOsStatsMapper.shortLinkOsState(linkOsStatsDO);
+            linkOsStatsMapper.shortLinkOsStats(linkOsStatsDO);
             LinkBrowserStatsDO linkBrowserStatsDO = LinkBrowserStatsDO.builder()
                     .browser(statsRecord.getBrowser())
                     .cnt(1)
                     .fullShortUrl(fullShortUrl)
                     .date(currentDate)
                     .build();
-            linkBrowserStatsMapper.shortLinkBrowserState(linkBrowserStatsDO);
+            linkBrowserStatsMapper.shortLinkBrowserStats(linkBrowserStatsDO);
             LinkDeviceStatsDO linkDeviceStatsDO = LinkDeviceStatsDO.builder()
                     .device(statsRecord.getDevice())
                     .cnt(1)

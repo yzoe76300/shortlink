@@ -346,7 +346,7 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
                 uvCookie.setMaxAge(60 * 60 * 24 * 30);
                 uvCookie.setPath(StrUtil.sub(fullShortUrl, fullShortUrl.indexOf("/"), fullShortUrl.length()));
                 ((HttpServletResponse)response).addCookie(uvCookie);
-                stringRedisTemplate.opsForSet().add("short-link:stats:uv:" + fullShortUrl, uv.get());
+                stringRedisTemplate.opsForSet().add(SHORT_LINK_STATS_UV_KEY + fullShortUrl, uv.get());
             });
 
             if (ArrayUtil.isNotEmpty(cookies)){
@@ -355,14 +355,14 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
                         .map(Cookie::getValue)
                         .ifPresentOrElse(each -> {
                             uv.set(each);
-                            Long uvAdded = stringRedisTemplate.opsForSet().add("short-link:stats:uv:" + fullShortUrl, each);
+                            Long uvAdded = stringRedisTemplate.opsForSet().add(SHORT_LINK_STATS_UV_KEY + fullShortUrl, each);
                             uvFirstFlag.set(uvAdded != null && uvAdded > 0L);
                         }, addResponseCookieTask::run);
             } else {
                 addResponseCookieTask.run();
             }
             String remoteAddr = LinkUtil.getIp(((HttpServletRequest) request));
-            Long uipAdded = stringRedisTemplate.opsForSet().add("short-link:stats:uip:" + fullShortUrl, remoteAddr);
+            Long uipAdded = stringRedisTemplate.opsForSet().add(SHORT_LINK_STATS_UIP_KEY + fullShortUrl, remoteAddr);
             boolean uipFirstFlag = uipAdded != null && uipAdded > 0L;
             if (StrUtil.isBlank(gid)){
                 LambdaQueryWrapper<ShortLinkGoToDO> queryWrapper = Wrappers.lambdaQuery(ShortLinkGoToDO.class)

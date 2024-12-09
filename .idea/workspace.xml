@@ -7,15 +7,13 @@
     <option name="showLibraryBeans" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 熔断和限流">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/14517aef-9169-4fcd-80c1-2ed11eae1b3a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/14517aef-9169-4fcd-80c1-2ed11eae1b3a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2fbfce5d-b5b7-4135-9cce-8fc4a7414a3f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2fbfce5d-b5b7-4135-9cce-8fc4a7414a3f.xml" afterDir="false" />
+    <list default="true" id="9a7520e3-ad57-46e8-8197-247d0f76abac" name="Changes" comment="feature: 短链接监控消费幂处理">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/biz/user/UserTransmitFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/biz/user/UserTransmitFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/constant/RedisCacheConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/common/constant/RedisCacheConstant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/common/constant/RedisKeyConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/common/constant/RedisKeyConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/mq/consumer/ShortLinkStatsSaveConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/mq/consumer/ShortLinkStatsSaveConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/service/impl/ShortLinkServiceimpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,15 +252,7 @@
       <workItem from="1733104430352" duration="30528000" />
       <workItem from="1733448867682" duration="14520000" />
       <workItem from="1733480856205" duration="348000" />
-      <workItem from="1733536256539" duration="14081000" />
-    </task>
-    <task id="LOCAL-00014" summary="feature: 短链接分组响应实体类">
-      <option name="closed" value="true" />
-      <created>1731725427367</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1731725427367</updated>
+      <workItem from="1733536256539" duration="17283000" />
     </task>
     <task id="LOCAL-00015" summary="feature: 用户登录拦截器忽略登录接口">
       <option name="closed" value="true" />
@@ -648,7 +638,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733538862597</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="feature: 短链接监控消费幂处理">
+      <option name="closed" value="true" />
+      <created>1733713866207</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1733713866207</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -666,7 +664,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feature: 短链接核心功能开发" />
     <MESSAGE value="optimize: 短链接跳转原始连接开发缓存击穿功能" />
     <MESSAGE value="optimize: 短链接创建缓存预热" />
     <MESSAGE value="feature: 短链接跳转时如果已过有效期设置为为空" />
@@ -691,21 +688,12 @@
     <MESSAGE value="optimize: 分组创建限制最大值" />
     <MESSAGE value="optimize: 修复短链接布隆过滤器逻辑存在问题" />
     <MESSAGE value="feature: 熔断和限流" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: 熔断和限流" />
+    <MESSAGE value="feature: 短链接监控消费幂处理" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: 短链接监控消费幂处理" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/service/impl/GroupServiceImpl.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/admin/src/main/java/com/nageoffer/shortlink/admin/controller/GroupController.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/project/src/main/java/com/nageoffer/shortlink/project/handler/CustomBlockHandler.java</url>
           <line>31</line>
