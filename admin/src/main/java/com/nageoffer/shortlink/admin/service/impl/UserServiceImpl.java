@@ -84,6 +84,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
                 } catch (DuplicateKeyException e) {
                     throw new ClientException(USER_EXIST);
                 }
+                // 给每个用户创建一个默认的组
                 userRegisterCachePenetrationBloomFilter.add(requestParam.getUsername());
                 groupService.saveGroup(requestParam.getUsername(), "default");
                 return;
@@ -92,9 +93,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
         } finally {
             lock.unlock();
         }
-
-
-
     }
 
     /**
@@ -113,14 +111,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
     * */
     @Override
     public UserLoginRespDTO login(UserLoginReqDTO requestParam) {
-        UserDO userDO = baseMapper.selectOne(Wrappers.lambdaQuery(UserDO.class)
+        LambdaQueryWrapper<UserDO> queryWrapper = Wrappers.lambdaQuery(UserDO.class)
                 .eq(UserDO::getUsername, requestParam.getUsername())
                 .eq(UserDO::getPassword, requestParam.getPassword())
-                .eq(UserDO::getDelFlag, 0));
+                .eq(UserDO::getDelFlag, 0);
+        UserDO userDO = baseMapper.selectOne(queryWrapper);
         if (userDO == null) {
             throw new ClientException(USER_NULL);
         }
         Map<Object, Object> hasLoginMap = stringRedisTemplate.opsForHash().entries(USER_LOGIN + requestParam.getUsername());
+        // 存在则刷新有效期并返回token
         if (CollUtil.isNotEmpty(hasLoginMap)) {
             stringRedisTemplate.expire(USER_LOGIN + requestParam.getUsername(), 30L, TimeUnit.MINUTES);
             String token = hasLoginMap.keySet().stream()
@@ -129,6 +129,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
                     .orElseThrow(() -> new ClientException("用户登录错误"));
             return new UserLoginRespDTO(token);
         }
+        // 不存在则生成uuid并存入redis
         String uuid = UUID.randomUUID().toString();
         stringRedisTemplate.opsForHash().put(USER_LOGIN + requestParam.getUsername(), uuid, JSON.toJSONString(userDO));
         stringRedisTemplate.expire(USER_LOGIN + requestParam.getUsername(), 30L, TimeUnit.MINUTES);

@@ -21,11 +21,13 @@ import com.nageoffer.shortlink.project.common.enums.ValiDateTypeEnum;
 import com.nageoffer.shortlink.project.config.GotoDomainWhiteListConfiguration;
 import com.nageoffer.shortlink.project.dao.entity.*;
 import com.nageoffer.shortlink.project.dao.mapper.*;
+import com.nageoffer.shortlink.project.dto.biz.ShortLinkStatsRecordDTO;
 import com.nageoffer.shortlink.project.dto.req.ShortLinkBatchCreateReqDTO;
 import com.nageoffer.shortlink.project.dto.req.ShortLinkCreateReqDTO;
 import com.nageoffer.shortlink.project.dto.req.ShortLinkPageReqDTO;
 import com.nageoffer.shortlink.project.dto.req.ShortLinkUpdateReqDTO;
 import com.nageoffer.shortlink.project.dto.resp.*;
+import com.nageoffer.shortlink.project.mq.producer.ShortLinkStatsSaveProducer;
 import com.nageoffer.shortlink.project.service.IShortLinkService;
 import com.nageoffer.shortlink.project.toolkit.HashUtil;
 import com.nageoffer.shortlink.project.toolkit.LinkUtil;
@@ -80,10 +82,11 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
     private final LinkNetworkStatsMapper linkNetworkStatsMapper;
     private final LinkStatsTodayMapper linkStatsTodayMapper;
     private final GotoDomainWhiteListConfiguration gotoDomainWhiteListConfiguration;
+    private final ShortLinkStatsSaveProducer shortLinkStatsSaveProducer;
     /*
     *  默认高德key
     * */
-    @Value("${short-link.stats.local.amap-key}")
+    @Value("${short-link.stats.locale.amap-key}")
     private String statsLocalAmapKey;
     /*
     *  默认域名
@@ -478,6 +481,12 @@ public class ShortLinkServiceimpl extends ServiceImpl<linkMapper, LinkDO> implem
 
     }
 
+    @Override
+    public void shortLinkStats(ShortLinkStatsRecordDTO statsRecord) {
+        Map<String, String> producerMap = new HashMap<>();
+        producerMap.put("statsRecord", JSON.toJSONString(statsRecord));
+        shortLinkStatsSaveProducer.send(producerMap);
+    }
     /*
     * 生成短链接后缀
     * */

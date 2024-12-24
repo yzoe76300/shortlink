@@ -17,16 +17,22 @@
 
 package com.nageoffer.shortlink.project.mq.consumer;
 
+import com.nageoffer.shortlink.project.common.convension.exception.ServiceException;
+import com.nageoffer.shortlink.project.dto.biz.ShortLinkStatsRecordDTO;
 import com.nageoffer.shortlink.project.mq.idempotent.MessageQueueIdempotentHandler;
 import com.nageoffer.shortlink.project.service.IShortLinkService;
+import com.nageoffer.shortlink.project.service.impl.ShortLinkStatsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RBlockingDeque;
+import org.redisson.api.RDelayedQueue;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.locks.LockSupport;
+import static com.nageoffer.shortlink.project.common.constant.RedisKeyConstant.DELAY_QUEUE_STATS_KEY;
 
 
 /**
@@ -41,6 +47,7 @@ public class DelayShortLinkStatsConsumer implements InitializingBean {
 
     private final RedissonClient redissonClient;
     private final IShortLinkService shortLinkService;
+    private final ShortLinkStatsServiceImpl shortLinkStatsService;
     private final MessageQueueIdempotentHandler messageQueueIdempotentHandler;
 
     public void onMessage() {

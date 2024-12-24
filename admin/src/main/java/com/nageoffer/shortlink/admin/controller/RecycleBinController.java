@@ -22,8 +22,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 public class RecycleBinController {
-    private ShortLinkRemoteService service = new ShortLinkRemoteService(){};
+
+    private final ShortLinkRemoteService service = new ShortLinkRemoteService(){};
     private final RecycleBinService recycleBinService;
+
     /*
     * 远程保存回收站短链
     * */
@@ -40,6 +42,7 @@ public class RecycleBinController {
     public Result<IPage<ShortLinkPageRespDTO>> pageRecycleBin(ShortLinkRecycleBinPageReqDTO requestParam) {
         return recycleBinService.pageRecycleBin(requestParam);
     }
+
     /*
      * 远程查恢复收站短链
      * */
@@ -49,6 +52,11 @@ public class RecycleBinController {
         return Results.success();
     }
 
+    /**
+     * 远程删除回收站短链
+     * @param requestParam
+     * @return
+     */
     @PostMapping("/api/short-link/admin/v1/recycle-bin/remove")
     public Result<Void> removeRecycleBin(@RequestBody RecycleBinDeleteReqDTO requestParam){
         service.deleteRecycleBin(requestParam);

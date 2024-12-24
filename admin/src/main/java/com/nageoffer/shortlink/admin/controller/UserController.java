@@ -7,6 +7,7 @@ import com.nageoffer.shortlink.admin.dto.req.UserLoginReqDTO;
 import com.nageoffer.shortlink.admin.dto.req.UserRegisterReqDTO;
 import com.nageoffer.shortlink.admin.dto.req.UserUpdateReqDTO;
 import com.nageoffer.shortlink.admin.dto.resp.UserLoginRespDTO;
+import com.nageoffer.shortlink.admin.dto.resp.UserRealRespDTO;
 import com.nageoffer.shortlink.admin.dto.resp.UserRespDTO;
 import com.nageoffer.shortlink.admin.service.IUserService;
 import lombok.RequiredArgsConstructor;
@@ -29,8 +30,8 @@ public class UserController {
      * 根据用户名查询真实用户信息
      * */
     @GetMapping("/api/short-link/admin/v1/real/user/{username}")
-    public Result<UserRespDTO> getRealUserByUsername(@PathVariable("username") String username) {
-        return Results.success(BeanUtil.toBean(userService.getUserByUsername(username), UserRespDTO.class));
+    public Result<UserRealRespDTO> getRealUserByUsername(@PathVariable("username") String username) {
+        return Results.success(BeanUtil.toBean(userService.getUserByUsername(username), UserRealRespDTO.class));
     }
     /*
      * 查询用户名是否存在

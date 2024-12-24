@@ -36,7 +36,7 @@ public class RecycleBinServiceImpl implements RecycleBinService {
         if (CollUtil.isEmpty(groupDOList)) {
             throw new ServiceException("用户无分组信息");
         }
-        // 查询回收站数据
+        // 查询回收站gid列表
         requestParam.setGidList(groupDOList.stream().map(GroupDO::getGid).toList());
         return service.pageRecycleBin(requestParam);
     }

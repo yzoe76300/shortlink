@@ -89,11 +89,13 @@ public class GroupServiceImpl extends ServiceImpl <GroupMapper, GroupDO> impleme
                 .eq(GroupDO::getUsername, UserContext.getUsername())
                 .orderByDesc(GroupDO::getSortOrder, GroupDO::getUpdateTime);
         List<GroupDO> groupDOList = baseMapper.selectList(groupDOLambdaQueryWrapper);
+        // 调用远程service传入gid作为参数查询分组的短链数量
         Result<List<ShortLinkCountQueryRespDTO>> listResult = shortLinkRemoteService
                 .listGroupShortLink(groupDOList
                         .stream()
                         .map(GroupDO::getGid)
                         .collect(Collectors.toList()));
+        // 使用流遍历listResult，将count结果填充到ShortlinkGroupResponseDTO中
         List<ShortlinkGroupResponseDTO> shortlinkGroupRespDTOList = BeanUtil.copyToList(groupDOList, ShortlinkGroupResponseDTO.class);
         shortlinkGroupRespDTOList.forEach(each -> {
             String gid = each.getGid();
@@ -124,6 +126,7 @@ public class GroupServiceImpl extends ServiceImpl <GroupMapper, GroupDO> impleme
                 .eq(GroupDO::getGid, gid)
                 .eq(GroupDO::getDelFlag, 0);
         GroupDO groupDO = new GroupDO();
+        // 只是setDelFlag为1，实际删除由定时任务完成
         groupDO.setDelFlag(1);
         baseMapper.update(groupDO, updateWrapper);
     }

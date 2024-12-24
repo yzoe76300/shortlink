@@ -3,6 +3,7 @@ package com.nageoffer.shortlink.project.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.nageoffer.shortlink.project.dao.entity.LinkDO;
+import com.nageoffer.shortlink.project.dto.biz.ShortLinkStatsRecordDTO;
 import com.nageoffer.shortlink.project.dto.req.ShortLinkBatchCreateReqDTO;
 import com.nageoffer.shortlink.project.dto.req.ShortLinkCreateReqDTO;
 import com.nageoffer.shortlink.project.dto.req.ShortLinkPageReqDTO;
@@ -60,4 +61,11 @@ public interface IShortLinkService extends IService<LinkDO> {
      *
      */
     void restoreUrl(String shortUri, ServletRequest request, ServletResponse response);
+
+    /**
+     * 短链接统计
+     *
+     * @param shortLinkStatsRecord 短链接统计实体参数
+     */
+    void shortLinkStats(ShortLinkStatsRecordDTO statsRecord);
 }

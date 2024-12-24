@@ -24,7 +24,7 @@ import java.util.List;
 
 @RestController
 public class ShortLinkController {
-    private ShortLinkRemoteService service = new ShortLinkRemoteService(){};
+    private final ShortLinkRemoteService service = new ShortLinkRemoteService(){};
 
     /**
      * 远程创建短链分页数据
@@ -48,6 +48,7 @@ public class ShortLinkController {
             EasyExcelWebUtil.write(response, "批量创建短链接-SaaS短链接系统", ShortLinkBaseInfoRespDTO.class, baseLinkInfos);
         }
     }
+
     /*
      * 远程查询短链分页数据
      * */
@@ -64,7 +65,4 @@ public class ShortLinkController {
         service.updateShortLink(requestParam);
         return Results.success();
     }
-
-
-
 }

@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class GroupController {
+
     private final IGroupService groupService;
 
     /**
@@ -29,7 +30,6 @@ public class GroupController {
     public Result<Void> save(@RequestBody ShortLinkGroupSaveReqDTO requestParam){
         groupService.saveGroup(requestParam.getName());
         return Results.success();
-
     }
 
     /**
@@ -53,12 +53,22 @@ public class GroupController {
         return Results.success();
     }
 
+    /**
+     * 删除短链接分组
+     * @param gid
+     * @return
+     */
     @DeleteMapping("/api/short-link/admin/v1/group")
     public Result<Void> deleteGroup(@RequestParam("gid") String gid) {
         groupService.deleteGroup(gid);
         return Results.success();
     }
 
+    /**
+     * 排序短链接分组
+     * @param requestParam
+     * @return
+     */
     @PostMapping("/api/short-link/v1/admin/group/sort")
     public Result<Void> sortGroup(@RequestBody List<ShortLinkGroupSortGroupReqDTO> requestParam){
         groupService.sortGroup(requestParam);
