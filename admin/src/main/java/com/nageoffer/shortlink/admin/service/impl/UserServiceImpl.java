@@ -7,6 +7,7 @@ import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.nageoffer.shortlink.admin.common.biz.user.UserContext;
 import com.nageoffer.shortlink.admin.common.constant.RedisCacheConstant;
 import com.nageoffer.shortlink.admin.common.convension.exception.ClientException;
 import com.nageoffer.shortlink.admin.dao.entity.UserDO;
@@ -28,6 +29,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import static com.nageoffer.shortlink.admin.common.constant.RedisCacheConstant.USER_LOGIN;
@@ -72,27 +74,24 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
         }
         RLock lock = redissonClient.getLock(RedisCacheConstant.LOCK_USER_REGISTER_KEY +
                                             requestParam.getUsername());
-        try {
-            if (lock.tryLock()) {
-                UserDO userDO = new UserDO();
-                BeanUtils.copyProperties(requestParam, userDO);
-                try {
-                    int insert = baseMapper.insert(userDO);
-                    if(insert < 1){
-                        throw new ClientException(USER_NULL);
-                    }
-                } catch (DuplicateKeyException e) {
-                    throw new ClientException(USER_EXIST);
+        if (!lock.tryLock()){
+            throw new ClientException(USER_NAME_EXIST);
+        }
+            UserDO userDO = new UserDO();
+            BeanUtils.copyProperties(requestParam, userDO);
+            try {
+                int insert = baseMapper.insert(userDO);
+                if(insert < 1){
+                    throw new ClientException(USER_NULL);
                 }
                 // 给每个用户创建一个默认的组
                 userRegisterCachePenetrationBloomFilter.add(requestParam.getUsername());
                 groupService.saveGroup(requestParam.getUsername(), "default");
-                return;
+            } catch (DuplicateKeyException e) {
+                throw new ClientException(USER_EXIST);
+            } finally {
+                lock.unlock();
             }
-            throw new ClientException(USER_NAME_EXIST);
-        } finally {
-            lock.unlock();
-        }
     }
 
     /**
@@ -101,6 +100,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
      */
     @Override
     public void update(UserUpdateReqDTO updateParam) {
+        if (!Objects.equals(updateParam.getUsername(), UserContext.getUsername())){
+            throw new ClientException("当前用户登录修改请求异常");
+        }
         LambdaQueryWrapper<UserDO> updateWrapper = Wrappers.lambdaQuery(UserDO.class)
                 .eq(UserDO::getUsername, updateParam.getUsername());
         baseMapper.update(BeanUtil.toBean(updateParam, UserDO.class),updateWrapper);
