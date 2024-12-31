@@ -65,7 +65,7 @@ public interface IShortLinkService extends IService<LinkDO> {
     /**
      * 短链接统计
      *
-     * @param shortLinkStatsRecord 短链接统计实体参数
+     * @param statsRecord 短链接统计实体参数
      */
     void shortLinkStats(ShortLinkStatsRecordDTO statsRecord);
 }

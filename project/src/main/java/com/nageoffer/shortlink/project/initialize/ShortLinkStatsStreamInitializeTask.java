@@ -16,7 +16,9 @@ import static com.nageoffer.shortlink.project.common.constant.RedisKeyConstant.S
 public class ShortLinkStatsStreamInitializeTask implements InitializingBean {
 
     private final StringRedisTemplate stringRedisTemplate;
-
+    /*
+    * 在Spring容器设置完所有属性后被调用，用于检查是否存在消费者组，如果不存在则创建
+    * */
     @Override
     public void afterPropertiesSet() throws Exception {
         Boolean hasKey = stringRedisTemplate.hasKey(SHORT_LINK_STATS_STREAM_TOPIC_KEY);

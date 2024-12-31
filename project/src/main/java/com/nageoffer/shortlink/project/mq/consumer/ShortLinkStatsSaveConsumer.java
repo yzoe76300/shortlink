@@ -85,6 +85,7 @@ public class ShortLinkStatsSaveConsumer implements StreamListener<String, MapRec
             if (messageQueueIdempotentHandler.isAccomplish(id.toString())) {
                 return;
             }
+            // MQ重复执行一遍逻辑代码
             throw new ServiceException("消息未完成流程，需要消息队列重试");
         }
         try {
@@ -93,7 +94,7 @@ public class ShortLinkStatsSaveConsumer implements StreamListener<String, MapRec
             actualSaveShortLinkStats(statsRecord);
             stringRedisTemplate.opsForStream().delete(Objects.requireNonNull(stream), id.getValue());
         } catch (Throwable ex) {
-            // 某某某情况宕机了
+            // 某某某情况宕机了, 防止消息堆积，只有运用Redis的修复机制将消息找回
             messageQueueIdempotentHandler.delMessageProcessed(id.toString());
             log.error("记录短链接监控消费异常", ex);
             throw ex;
@@ -189,6 +190,7 @@ public class ShortLinkStatsSaveConsumer implements StreamListener<String, MapRec
             shortLinkMapper.incrementStats(gid, fullShortUrl, 1, statsRecord.getUvFirstFlag() ? 1 : 0, statsRecord.getUipFirstFlag() ? 1 : 0);
             LinkStatsTodayDO linkStatsTodayDO = LinkStatsTodayDO.builder()
                     .todayPv(1)
+                    .gid(gid)
                     .todayUv(statsRecord.getUvFirstFlag() ? 1 : 0)
                     .todayUip(statsRecord.getUipFirstFlag() ? 1 : 0)
                     .fullShortUrl(fullShortUrl)
